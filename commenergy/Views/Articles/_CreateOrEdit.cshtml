@@ -1,0 +1,49 @@
+@using commenergy.Models;
+@model commenergy.Models.Article
+
+
+@Styles.Render("~/content/bootstrap.css")
+
+  <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+<script src="~/Scripts/knockout-3.0.0.js"></script>
+ 
+
+<!doctype html>
+<html>
+    <head><title> Create or Modify Existing Article </title></head>
+    <body>          
+                
+                
+        <table aria-checked="true">
+            <tr>
+                <td>Key</td>
+                <td><input type="text" data-bind="value: Key"/></td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td><input type="text" data-bind="value: Title"/></td>
+                
+            </tr>
+            <tr>
+                <td>Body</td>
+                <td><textarea data-bind="value: Body"></textarea></td>
+            </tr>
+             <tr>
+            <td>MetaDescription</td>
+            <td><input type="text" data-bind="value: MetaDescription"/></td> 
+                 </tr>
+            <tr>
+            <td colspan="2">
+                <button class ="btn-primary" data-bind="click: addArticle">Save</button>
+            </td>
+        </tr>
+        </table>
+                   
+                    <a href="@Url.Action("Index", "Articles")" class="btn btn-primary">Cancel</a>
+             
+    </body>
+</html>
+@section Scripts {
+    <script src="~/Scripts/ViewModels/Create.js"></script>
+   
+}

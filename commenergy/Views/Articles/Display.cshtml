@@ -1,0 +1,97 @@
+﻿@model commenergy.Models.Article
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>Display</h2>
+<h1>@Model.Title</h1>
+<i>Published: @Model.CreatedOn.ToString("yyyy-MM-dd")</i> | 
+<hr />
+@Html.Raw(Model.Body)
+<br />
+<hr />
+
+
+
+
+@if (Model.Comments != null && Model.Comments.Count > 0)
+{
+    <h4>Comments</h4>
+    
+    <ul class="comments">
+    @foreach (commenergy.Models.Comment com in Model.Comments)
+    {
+        <li>
+            @if(string.IsNullOrWhiteSpace(com.URL))
+            {
+                <b>@com.Author</b>  <i>@com.CreatedOn.ToString("yyyy-MM-dd HH':'mm':'ss") UTC</i>
+            }
+            else 
+            {
+                 <b><a href="@com.URL" rel="nofollow" target="_blank">@com.Author</a></b>  <i>@com.CreatedOn.ToString("yyyy-MM-dd HH':'mm':'ss")</i> 
+            }
+            
+            
+                <br />
+            <p>
+            @com.Body
+        </p>
+                </li>
+    }
+        </ul>
+}
+else {
+ <h4>No Comments... Yet</h4>   
+}
+<br />
+        @Html.ValidationSummary(true)
+
+        @using (Html.BeginForm("Comment", "Articles", FormMethod.Post))
+        {
+            
+            <input type="hidden" name="ArticleId" value="@Model.Id" />
+<fieldset>
+    <legend><b>Comment On</b></legend>
+
+    <div class="editor-label">
+        <label for="Name">Name</label>
+    </div>
+    <div class="editor-field">
+        <input required="required" style="width:200px" type="text" name="Author" />
+
+
+    </div>
+
+    <div class="editor-label">
+        <label for="Email">E-Mail</label>
+    </div>
+    <div class="editor-field">
+        <input required="required" style="width:200px" type="email" name="Email" />
+
+
+    </div>
+
+
+    <div class="editor-label">
+        <label for="Url">Url <i>(optional)</i></label>
+    </div>
+    <div class="editor-field">
+        <input style="width:200px" type="url" name="Url" />
+
+
+    </div>
+
+
+    
+    <div class="editor-label">
+        <label for="Body">Body</label>
+    </div>
+    <div class="editor-field">
+        <textarea required="required" cols="20" rows="2" style="width:400px" name="Body"></textarea>
+
+    </div>
+    
+              <button class="green" type="submit">Submit</button>
+</fieldset>
+        }

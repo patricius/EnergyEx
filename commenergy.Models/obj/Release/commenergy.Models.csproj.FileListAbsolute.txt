@@ -1,0 +1,13 @@
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\commenergy.Models.dll
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\commenergy.Models.pdb
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\DataAnnotationsExtensions.dll
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\DynamicData.EFCodeFirstProvider.dll
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\EntityFramework.dll
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\System.Web.Http.Common.dll
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\EntityFramework.xml
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\bin\Release\System.Web.Http.Common.xml
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\obj\Release\commenergy.Models.dll
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\obj\Release\commenergy.Models.pdb
+C:\Users\apprentice\documents\visual studio 2012\Projects\commenergy\commenergy.Models\obj\Release\commenergy.Models.csprojResolveAssemblyReference.cache
+C:\Users\apprentice\Documents\Visual Studio 2012\Projects\commenergy\commenergy.Models\bin\Release\Newtonsoft.Json.dll
+C:\Users\apprentice\Documents\Visual Studio 2012\Projects\commenergy\commenergy.Models\bin\Release\Newtonsoft.Json.xml

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>WijmoMvcScaffolding</id>
+    <version>1.2</version>
+    <title>Wijmo Scaffolding in MVC</title>
+    <authors>ComponentOne</authors>
+    <owners>ComponentOne</owners>
+    <licenseUrl>http://wijmo.com/widgets/license/wijmo-commercial-license-agreement/</licenseUrl>
+    <projectUrl>http://wijmo.com/</projectUrl>
+    <iconUrl>http://wijmo.com/img/media/wijmo_mvc_150.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package is MVC Scaffolding for generating Razor Views automatically enhanced with jQuery UI and Wijmo. You will need Wijmo Complete installed and referenced in order to use this scaffolding. Wijmo Complete is a commercial kit of jQuery UI widgets for building Web applications.</description>
+    <summary>This package is MVC Scaffolding for generating Razor Views automatically enhanced with jQuery UI and Wijmo. You will need Wijmo Complete installed and referenced in order to use this scaffolding. Wijmo Complete is a commercial kit of jQuery UI widgets for building Web applications.</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>MVC scaffolding Views Razor jQuery jQueryUI Wijmo widgets plugins JavaScript UI AJAX Grid Data</tags>
+    <references />
+  </metadata>
+</package>

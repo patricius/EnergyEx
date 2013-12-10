@@ -1,0 +1,86 @@
+    @using commenergy.Models    @model  commenergy.Models.PagedResult<commenergy.Models.Article>
+
+@{
+    ViewBag.Title = "Energy Community Exchange";
+    ViewBag.MetaDesc = "Energy Drink Reviews and Information.";
+}
+
+
+@*<h1>Articles</h1>
+
+<i>Here are reviews of energy drinks and places to buy them</i>
+<hr />
+<br />
+<ul class="no_item_type" style="margin:0;padding:0;">
+
+@foreach (var item in Model.Results) {
+    
+    <li class="article_item">
+        <a href="@item.URLTo">@item.Title</a>
+                
+        <ul class="no_item_type">
+            <li> <i>Published: @item.CreatedOn.ToString("yyyy-MM-dd") | @if (item.Comments != null && item.Comments.Count > 0)
+                                      {
+                                     <a href="@item.URLTo#comments">Comments: @item.Comments.Count</a>
+                                                                               }
+                            se                                                   else
+                                                                               {
+                                      <text>Comments: 0 </text>
+                                                                               }
+                                                                  </i></li>
+            <li>
+
+                        @item.MetaDescription
+            </li>
+        </ul>
+    </li>
+}
+    </ul>
+
+ 
+@{
+    int pageCount = Model.PageCount;
+
+    for (int pageNumber = 1; pageNumber <= pageCount; pageNumber++)
+    {
+        if (string.IsNullOrEmpty(Request.QueryString["page"]) && pageNumber == 1)
+        {
+    @pageNumber     
+        }
+        else if (!string.IsNullOrEmpty(Request.QueryString["page"]) &&
+            pageNumber == Convert.ToInt32(Request.QueryString["page"])
+            )
+        {
+    @pageNumber 
+        }
+        else
+        {
+    <a href="@Url.Content("~/articles/?" + "page" + "=" + pageNumber.ToString())">@pageNumber.ToString()</a>  
+        }
+    }
+    
+}*@
+ <div class="row" data-bind ="foreach: Results">
+          <div class="col-md-4">
+              <div style="width: 25%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">        
+                  <h2 data-bind ="text: Title"></h2>
+                  <p  data-bind="text: Body"></p>
+              </div>   
+              <label data-bind="text:Key"></label>
+ 
+           
+          </div>
+     </div>
+                    
+
+ 
+  
+  
+
+
+
+@section Scripts {
+
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+        <script src="~/Scripts/IndexVM.js"></script>
+}
