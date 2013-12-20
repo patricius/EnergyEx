@@ -78,33 +78,44 @@ public class ArticlesController : Controller
             return View(_articleRepository.Find(id));
         }
 
-        //public ViewResult Display(string yyyy, string mm, string dd, string key)
-        //{
-        //    return View(_articleRepository.Find(key));
-        //}
-
-        [System.Web.Http.HttpPost]
-        public ActionResult Comment(Comment model)
+        public ViewResult Display(string yyyy, string mm, string dd, string key)
         {
-            var article = _articleRepository.Find(model.ArticleID);
+           var articledip = _articleRepository.Find(key);
+           return View(articledip);
+       }
 
-            model.IpAddress = Request.UserHostAddress;
+
+        public JsonResult Displays(string key)
+        {
+            var articledip = _articleRepository.Find(key);
+            return Json(articledip, JsonRequestBehavior.AllowGet);
+        }
+        [System.Web.Http.HttpPost]
+        public JsonResult Comment(Comment model)
+        {
+            var article = _articleRepository.Find(model.ArticleId);
+          
+            model.IpAddress = Request.UserHostAddress;            
             model.CreatedOn = DateTime.UtcNow;
 
+            model.Author = model.Author;
+            model.Body = model.Body;
             ModelState.Remove("CreatedOn");
             ModelState.Remove("IpAddress");
-
+            
             TryUpdateModel(model);
 
             if (ModelState.IsValid)
             {
                 _commentRepository.InsertOrUpdate(model);
-
+                article.Comments.Add(model);
+                _articleRepository.Save();
                 _commentRepository.Save();
+               
             }
-
-            Response.Redirect("~/" + article.URLTo + "#comments");
-            return new EmptyResult();
+           
+          
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
 

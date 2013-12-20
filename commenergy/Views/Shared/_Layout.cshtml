@@ -47,13 +47,13 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p><div class="fadein">
+        <h1>Energy Drink Reviews/Tips </h1>
+        <div class="fadein">
             <img src="~/Content/drinks1.jpg" alt="Energy" />
             <img src="~/Content/drinks2.jpg" alt="Energy" />
             <img src="~/Content/MonsterDrinksMain.jpg" alt="Energy" />
 
-        </div></p>
+        </div>
         <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
@@ -63,14 +63,11 @@
       <div class="row">
           <div class="col-md-4">
               @RenderBody()
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-          </div>
-        <div class="col-md-4">
+            </div>
+        <@*div class="col-md-4">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></*@p>
        </div>
         <div class="col-md-4">
           <h2>Heading</h2>
@@ -84,16 +81,16 @@
       <footer>
         <p>&copy; Company 2013</p>
       </footer>
-    </div> <!-- /container -->
+     <!-- /container -->
        
       
     <!-- Bootstrap core JavaScript
     ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
-    
+       @Scripts.Render("~/scripts/jquery-2.0.3.js") 
       @Scripts.Render("~/scripts/bootstrap.min.js")
       @Scripts.Render("~/scripts/knockout-3.0.0.js") 
-        @Scripts.Render("~/scripts/jquery-2.0.3.js")   
+       
    <script type ="text/javascript">
 $(function () {
     $('.fadein img:gt(0)').hide();

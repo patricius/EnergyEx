@@ -20,6 +20,11 @@ namespace commenergy
         );
 
             routes.MapRoute(
+            "ArticleItemk",
+            "articles/{yyyy}/{mm}/{dd}/{key}",
+           new { controller = "Articles", action = "Displays" }
+       );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Articles", action = "Index", id = UrlParameter.Optional }

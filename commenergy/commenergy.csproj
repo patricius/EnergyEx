@@ -398,6 +398,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\sampleedit.js" />
     <Content Include="Scripts\ViewModels\Create.js" />
+    <Content Include="Scripts\ViewModels\CreateComment.js" />
+    <Content Include="Scripts\ViewModels\display.js" />
     <Content Include="Scripts\ViewModels\Index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

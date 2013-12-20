@@ -31,8 +31,8 @@ namespace commenergy.Models
 
         [DataAnnotationsExtensions.Url]
         public string URL { get; set; }
-
-        public int ArticleID { get; set; }
+      
+        public int ArticleId { get; set; }
     }
 }
 

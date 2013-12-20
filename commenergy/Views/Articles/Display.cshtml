@@ -5,93 +5,58 @@
 }
 
 <h2>Display</h2>
-<h1>@Model.Title</h1>
-<i>Published: @Model.CreatedOn.ToString("yyyy-MM-dd")</i> | 
-<hr />
-@Html.Raw(Model.Body)
-<br />
-<hr />
-
-
-
-
-@if (Model.Comments != null && Model.Comments.Count > 0)
-{
-    <h4>Comments</h4>
-    
-    <ul class="comments">
-    @foreach (commenergy.Models.Comment com in Model.Comments)
-    {
-        <li>
-            @if(string.IsNullOrWhiteSpace(com.URL))
-            {
-                <b>@com.Author</b>  <i>@com.CreatedOn.ToString("yyyy-MM-dd HH':'mm':'ss") UTC</i>
-            }
-            else 
-            {
-                 <b><a href="@com.URL" rel="nofollow" target="_blank">@com.Author</a></b>  <i>@com.CreatedOn.ToString("yyyy-MM-dd HH':'mm':'ss")</i> 
-            }
+<div id ="Display" class="row" data-bind="">
+          <div class="col-md-4">
+                  <h2 data-bind ="value: Title"></h2>
+                  <p data-bind="text: Body"></p>
+                    <label data-bind="value: Key"></label>
+              </div>
+            </div>
+              @*//<a href data-bind ="text: URLto"></a>*@
+              @*<ul data-bind = "foreach:Comments">
+              <li data-bind="text:Author"></li>
+              <p data-bind="text:Body"></p>*@
+                 
+       
             
-            
-                <br />
-            <p>
-            @com.Body
-        </p>
-                </li>
-    }
-        </ul>
-}
-else {
- <h4>No Comments... Yet</h4>   
-}
-<br />
-        @Html.ValidationSummary(true)
 
-        @using (Html.BeginForm("Comment", "Articles", FormMethod.Post))
-        {
-            
-            <input type="hidden" name="ArticleId" value="@Model.Id" />
-<fieldset>
-    <legend><b>Comment On</b></legend>
+    <h2><b>Comment On</b></h2>
 
-    <div class="editor-label">
-        <label for="Name">Name</label>
-    </div>
-    <div class="editor-field">
-        <input required="required" style="width:200px" type="text" name="Author" />
+            <div id="Comment">
+                
+                Author:
+                <input type ="text" data-bind ="value:Author"/>
+   
+   
+ 
+       Body:
+        <input type ="text" data-bind ="value: Body">
+ 
 
 
-    </div>
+        Email:
+        <input type="text" data-bind = "value: Email"/>
 
-    <div class="editor-label">
-        <label for="Email">E-Mail</label>
-    </div>
-    <div class="editor-field">
-        <input required="required" style="width:200px" type="email" name="Email" />
-
-
-    </div>
-
-
-    <div class="editor-label">
-        <label for="Url">Url <i>(optional)</i></label>
-    </div>
-    <div class="editor-field">
-        <input style="width:200px" type="url" name="Url" />
-
-
-    </div>
-
+ 
+        Url:
+        <input type="text" data-bind = "value: Url"/>
+   
 
     
-    <div class="editor-label">
-        <label for="Body">Body</label>
-    </div>
-    <div class="editor-field">
-        <textarea required="required" cols="20" rows="2" style="width:400px" name="Body"></textarea>
-
-    </div>
+        IpAddress: 
+                <input type ="text" data-bind="value: IpAddress"/>
+                
+                  <button class ="btn-primary" data-bind="click: addComment">Save</button>
+            </div> 
     
-              <button class="green" type="submit">Submit</button>
-</fieldset>
-        }
+
+
+  
+     
+    
+            
+            
+  <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+<script src="~/Scripts/knockout-3.0.0.js"></script>
+<script src="~/Scripts/ViewModels/display.js"></script>
+<script src="~/Scripts/ViewModels/CreateComment.js"></script>
