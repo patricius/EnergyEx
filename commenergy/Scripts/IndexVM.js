@@ -1,4 +1,5 @@
-﻿var urlPath = window.location.href;
+﻿/// <reference path="bootstrap.min.js" />
+var urlPath = window.location.href;
 
 
 var indexVM = {    

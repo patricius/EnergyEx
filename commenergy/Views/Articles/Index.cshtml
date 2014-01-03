@@ -62,11 +62,12 @@
 }*@
  <div class="row" data-bind ="foreach: Results">
           <div class="col-md-4">
-              <div style="width: 25%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">        
+              <div style="width: 50%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">        
                   <h2 data-bind ="text: Title"></h2>
                   <p  data-bind="text: Body"></p>
+                  <p><a class="btn btn-default" data-bind ="attr: URLTo" role="button">View details &raquo;</a></p>
               </div>   
-              <label data-bind="text:Key"></label>
+           
               @*//<a href data-bind ="text: URLto"></a>*@
            
           </div>

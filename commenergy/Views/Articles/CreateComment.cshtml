@@ -1,0 +1,28 @@
+﻿
+<h2><b>Comment On</b></h2>
+
+<div id="Comment">
+
+
+    Author: <input type="text" data-bind= "value: Author"/>
+
+
+       Email:  <input type="text" data-bind="value: Email" />
+
+        
+        Url:
+        <input type="text" data-bind="value: Body" />
+
+
+
+        IpAddress:
+        <input type="text" data-bind="value: IpAddress" />
+
+        <button class="btn-primary" data-bind="click: addComment">Save</button>
+   
+</div>
+@section Scripts {
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+    <script src="~/Scripts/ViewModels/CreateComment.js"></script>
+
+}

@@ -192,7 +192,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Context\DataContext.cs" />
     <Compile Include="Migrations\201311182000085_UsersContext.cs" />
     <Compile Include="Migrations\201311182000085_UsersContext.Designer.cs">
       <DependentUpon>201311182000085_UsersContext.cs</DependentUpon>
@@ -205,9 +204,25 @@
     <Compile Include="Migrations\201312021619264_commenergy.Models.commenergyContext.Designer.cs">
       <DependentUpon>201312021619264_commenergy.Models.commenergyContext.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201312050605273_commenergy.layer.article.cs.cs" />
+    <EmbeddedResource Include="Migrations\201312050605273_commenergy.layer.article.cs.cs" />
     <Compile Include="Migrations\201312050605273_commenergy.layer.article.cs.Designer.cs">
       <DependentUpon>201312050605273_commenergy.layer.article.cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312271638394_AddUserIdArticle.cs" />
+    <Compile Include="Migrations\201312271638394_AddUserIdArticle.Designer.cs">
+      <DependentUpon>201312271638394_AddUserIdArticle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312271644595_add-migration fixnullable.cs" />
+    <Compile Include="Migrations\201312271644595_add-migration fixnullable.Designer.cs">
+      <DependentUpon>201312271644595_add-migration fixnullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401032128113_useridnullable.cs" />
+    <Compile Include="Migrations\201401032128113_useridnullable.Designer.cs">
+      <DependentUpon>201401032128113_useridnullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201401032133418_commentconstructorarticle.cs" />
+    <Compile Include="Migrations\201401032133418_commentconstructorarticle.Designer.cs">
+      <DependentUpon>201401032133418_commentconstructorarticle.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DataContextInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -215,8 +230,6 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Utilities.cs" />
-    <Compile Include="Entities\Role.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,6 +253,18 @@
       <DependentUpon>201312021619264_commenergy.Models.commenergyContext.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312050605273_commenergy.layer.article.cs.resx" />
+    <EmbeddedResource Include="Migrations\201312271638394_AddUserIdArticle.resx">
+      <DependentUpon>201312271638394_AddUserIdArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312271644595_add-migration fixnullable.resx">
+      <DependentUpon>201312271644595_add-migration fixnullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401032128113_useridnullable.resx">
+      <DependentUpon>201401032128113_useridnullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201401032133418_commentconstructorarticle.resx">
+      <DependentUpon>201401032133418_commentconstructorarticle.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\commenergy.Models.commenergyContext.mdf" />
@@ -458,6 +483,7 @@
     <Content Include="Views\Articles\Admin.cshtml" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
+    <Content Include="Views\Articles\CreateComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\commenergy.Models\commenergy.Layer.csproj">

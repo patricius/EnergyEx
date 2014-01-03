@@ -11,7 +11,6 @@ function Article(data) {
 function ArticleViewModel() {
     var self = this;
     self.Key = ko.observable();
-  
     self.Title = ko.observable();
     self.MetaDescription = ko.observable();
     self.Body = ko.observable();
@@ -49,5 +48,5 @@ function ArticleViewModel() {
 
 
 var vm = new ArticleViewModel();
-        ko.applyBindings(vm);
+ko.applyBindings(vm);
   

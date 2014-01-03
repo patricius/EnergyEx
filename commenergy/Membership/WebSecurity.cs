@@ -39,11 +39,10 @@ using System.Web.Security;
 
             if (CreateStatus == MembershipCreateStatus.Success)
             {
-                using (DataContext Context = new DataContext())
+                using (var Context = new commenergy.Models.commenergyContext())
                 {
-                    User User = Context.Users.FirstOrDefault(Usr => Usr.Username == Username);
-                    User.FirstName = FirstName;
-                    User.LastName = LastName;
+                    commenergy.Models.Models.User User = Context.Users.FirstOrDefault(Usr => Usr.Username == Username);
+                   
                     Context.SaveChanges();
                 }
 

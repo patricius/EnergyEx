@@ -15,13 +15,13 @@ namespace commenergy
 
             routes.MapRoute(
              "ArticleItem",
-             "articles/{yyyy}/{mm}/{dd}/{key}",
+             "{controller}/{yyyy}/{mm}/{dd}/{key}",
             new { controller = "Articles", action = "Display" }
         );
 
             routes.MapRoute(
             "ArticleItemk",
-            "articles/{yyyy}/{mm}/{dd}/{key}",
+            "{controller}/{yyyy}/{mm}/{dd}/{key}/display",
            new { controller = "Articles", action = "Displays" }
        );
             routes.MapRoute(

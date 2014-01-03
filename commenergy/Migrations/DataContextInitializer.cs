@@ -3,9 +3,9 @@ using System.Web.Security;
 
 namespace commenergy.Migrations
 {
-    public class DataContextInitializer:DropCreateDatabaseAlways<DataContext>
+    public class DataContextInitializer:DropCreateDatabaseAlways<commenergy.Models.commenergyContext>
     {
-        protected override void Seed(DataContext context)
+        protected override void Seed(commenergy.Models.commenergyContext context)
         {
             WebSecurity.Register("Demo", "123456", "demo@demo.com", true, "Demo", "Demo");
             Roles.CreateRole("Admin");

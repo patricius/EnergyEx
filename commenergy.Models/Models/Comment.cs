@@ -17,7 +17,7 @@ namespace commenergy.Models
 
         [StringLength(75)]
         [Required]
-        public string Author {get;set;}
+        public string Author { get; set; }
 
         [Required]
         public string Body { get; set; }

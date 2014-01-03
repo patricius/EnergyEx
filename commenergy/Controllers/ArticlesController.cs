@@ -5,7 +5,7 @@
     using System.Web.Mvc;
     using commenergy.Controllers;
     using commenergy.Models;
-  
+using commenergy.Models.Models;
     using Newtonsoft.Json;
     using JsonSerializer = EventStore.Serialization.JsonSerializer;
 
@@ -85,7 +85,7 @@ public class ArticlesController : Controller
        }
 
 
-        public JsonResult Displays(string key)
+        public JsonResult Displays(string yyyy, string mm, string dd, string key)
         {
             var articledip = _articleRepository.Find(key);
             return Json(articledip, JsonRequestBehavior.AllowGet);
@@ -137,11 +137,13 @@ public class ArticlesController : Controller
 
         //
         // POST: /Articles/Create
-    
     [System.Web.Mvc.HttpPost]
     [ValidateInput(false)]
     public JsonResult Create(Article article)
-    { 
+    {
+       User j = new User();
+       article.UserId = j.Id;
+        article.Author = User.Identity.Name;
         article.Key = Utilities.WebSafeMaker(article.Key);
         article.CreatedOn = DateTime.Now;
        article.Body = article.Body;

@@ -5,58 +5,56 @@
 }
 
 <h2>Display</h2>
-<div id ="Display" class="row" data-bind="">
-          <div class="col-md-4">
-                  <h2 data-bind ="value: Title"></h2>
-                  <p data-bind="text: Body"></p>
-                    <label data-bind="value: Key"></label>
-              </div>
-            </div>
-              @*//<a href data-bind ="text: URLto"></a>*@
-              @*<ul data-bind = "foreach:Comments">
-              <li data-bind="text:Author"></li>
-              <p data-bind="text:Body"></p>*@
-                 
-       
-            
+<div id="d"> 
+    <div class="row" data-bind="foreach: Article">
+    <div class="col-md-4">
+        <div style="width: 25%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">
+            <h2 data-bind="text: Title"></h2>
+            <p data-bind="text: Body"></p>
+        </div>
+        
+        </div>
+    </div>
+    </div>
+        @*//<a href data-bind ="text: URLto"></a>*@
+        @*//<ul data-bind = "foreach:Comments">
+            <li data-bind="text:Author"></li>
+            <p data-bind="text:Body"></p>*@
 
-    <h2><b>Comment On</b></h2>
+<h2><b>Comment On</b></h2>
 
-            <div id="Comment">
-                
-                Author:
-                <input type ="text" data-bind ="value:Author"/>
-   
-   
- 
-       Body:
-        <input type ="text" data-bind ="value: Body">
- 
+<div id="Comment">
 
 
-        Email:
-        <input type="text" data-bind = "value: Email"/>
 
- 
-        Url:
-        <input type="text" data-bind = "value: Url"/>
    
 
-    
-        IpAddress: 
-                <input type ="text" data-bind="value: IpAddress"/>
-                
-                  <button class ="btn-primary" data-bind="click: addComment">Save</button>
-            </div> 
-    
 
+    Email:  <input type="text" data-bind="value: Email" />
+    Author: <input type="text" data-bind="value: Author" />
 
+    Body:
+    <input type="text" data-bind="value: Body" />
   
-     
-    
-            
-            
-  <script src="~/Scripts/jquery-2.0.3.min.js"></script>
-<script src="~/Scripts/knockout-3.0.0.js"></script>
-<script src="~/Scripts/ViewModels/display.js"></script>
+
+
+    IpAddress:
+    <input type="text" data-bind="value: IpAddress" />
+
+    <button class="btn-primary" data-bind="click: addComment">Save</button>
+
+</div>
+
+
+
+
+
+
+
+
+        @section Scripts {
+            <script src="~/Scripts/knockout-3.0.0.js"></script>
+            <script src="~/Scripts/ViewModels/display.js"></script>
 <script src="~/Scripts/ViewModels/CreateComment.js"></script>
+
+        }

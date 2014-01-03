@@ -10,9 +10,11 @@ namespace commenergy.Models
 {
     public class Article
     {
+        [Display(Name = "User Name")]
+        [DisplayFormat(NullDisplayText = "anonymous")]
         public string Author { get; set; }
         public int Id { get; set; }
-
+        public int? UserId { get; set; }
 
         [StringLength(75)]
        
@@ -35,7 +37,7 @@ namespace commenergy.Models
 
         public Article()
         {
-            Comments = null;
+            Comments = new List<Comment>();
         }
 
         //[EmailAddress]

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Security;
-
+using commenergy.Models.Models;
     public class CodeFirstMembershipProvider : MembershipProvider
     {
 
@@ -25,6 +25,7 @@ using System.Web.Security;
                 this.ApplicationName = this.GetType().Assembly.GetName().Name.ToString();
             }
         }
+
 
         public override int MaxInvalidPasswordAttempts
         {
@@ -90,7 +91,9 @@ using System.Web.Security;
                 return null;
             }
 
-            using (DataContext Context = new DataContext())
+
+           
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 if (Context.Users.Where(Usr => Usr.Username == username).Any())
                 {
@@ -106,7 +109,7 @@ using System.Web.Security;
 
                 User NewUser = new User
                 {
-                    UserId = Guid.NewGuid(),
+                    
                     Username = username,
                     Password = HashedPassword,
                     IsApproved = isApproved,
@@ -124,9 +127,11 @@ using System.Web.Security;
                 Context.Users.Add(NewUser);
                 Context.SaveChanges();
                 status = MembershipCreateStatus.Success;
-                return new MembershipUser(Membership.Provider.Name, NewUser.Username, NewUser.UserId, NewUser.Email, null, null, NewUser.IsApproved, NewUser.IsLockedOut, NewUser.CreateDate.Value, NewUser.LastLoginDate.Value, NewUser.LastActivityDate.Value, NewUser.LastPasswordChangedDate.Value, NewUser.LastLockoutDate.Value);
+                return new MembershipUser(Membership.Provider.Name, NewUser.Username, NewUser.Id, NewUser.Email, null, null, NewUser.IsApproved, NewUser.IsLockedOut, NewUser.CreateDate.Value, NewUser.LastLoginDate.Value, NewUser.LastActivityDate.Value, NewUser.LastPasswordChangedDate.Value, NewUser.LastLockoutDate.Value);
             }
         }
+
+
 
         public string CreateUserAndAccount(string userName, string password, bool requireConfirmation, IDictionary<string, object> values)
         {
@@ -143,7 +148,7 @@ using System.Web.Security;
             {
                 return false;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -200,7 +205,7 @@ using System.Web.Security;
             {
                 return null;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -211,7 +216,7 @@ using System.Web.Security;
                         User.LastActivityDate = DateTime.UtcNow;
                         Context.SaveChanges();
                     }
-                    return new MembershipUser(Membership.Provider.Name, User.Username, User.UserId, User.Email, null, null, User.IsApproved, User.IsLockedOut, User.CreateDate.Value, User.LastLoginDate.Value, User.LastActivityDate.Value, User.LastPasswordChangedDate.Value, User.LastLockoutDate.Value);
+                    return new MembershipUser(Membership.Provider.Name, User.Username, User.Id, User.Email, null, null, User.IsApproved, User.IsLockedOut, User.CreateDate.Value, User.LastLoginDate.Value, User.LastActivityDate.Value, User.LastPasswordChangedDate.Value, User.LastLockoutDate.Value);
                 }
                 else
                 {
@@ -228,7 +233,7 @@ using System.Web.Security;
                 return null;
             }
 
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.Find(providerUserKey);
@@ -239,7 +244,7 @@ using System.Web.Security;
                         User.LastActivityDate = DateTime.UtcNow;
                         Context.SaveChanges();
                     }
-                    return new MembershipUser(Membership.Provider.Name, User.Username, User.UserId, User.Email, null, null, User.IsApproved, User.IsLockedOut, User.CreateDate.Value, User.LastLoginDate.Value, User.LastActivityDate.Value, User.LastPasswordChangedDate.Value, User.LastLockoutDate.Value);
+                    return new MembershipUser(Membership.Provider.Name, User.Username, User.Id, User.Email, null, null, User.IsApproved, User.IsLockedOut, User.CreateDate.Value, User.LastLoginDate.Value, User.LastActivityDate.Value, User.LastPasswordChangedDate.Value, User.LastLockoutDate.Value);
                 }
                 else
                 {
@@ -262,7 +267,7 @@ using System.Web.Security;
             {
                 return false;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -307,7 +312,7 @@ using System.Web.Security;
 
         public override bool UnlockUser(string userName)
         {
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == userName);
@@ -328,7 +333,7 @@ using System.Web.Security;
         public override int GetNumberOfUsersOnline()
         {
             DateTime DateActive = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(Convert.ToDouble(Membership.UserIsOnlineTimeWindow)));
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 return Context.Users.Where(Usr => Usr.LastActivityDate > DateActive).Count();
             }
@@ -340,7 +345,7 @@ using System.Web.Security;
             {
                 return false;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -359,7 +364,7 @@ using System.Web.Security;
 
         public override string GetUserNameByEmail(string email)
         {
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Email == email);
@@ -377,13 +382,13 @@ using System.Web.Security;
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection MembershipUsers = new MembershipUserCollection();
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 totalRecords = Context.Users.Where(Usr => Usr.Email == emailToMatch).Count();
                 IQueryable<User> Users = Context.Users.Where(Usr => Usr.Email == emailToMatch).OrderBy(Usrn => Usrn.Username).Skip(pageIndex * pageSize).Take(pageSize);
                 foreach (User user in Users)
                 {
-                    MembershipUsers.Add(new MembershipUser(Membership.Provider.Name, user.Username, user.UserId, user.Email, null, null, user.IsApproved, user.IsLockedOut, user.CreateDate.Value, user.LastLoginDate.Value, user.LastActivityDate.Value, user.LastPasswordChangedDate.Value, user.LastLockoutDate.Value));
+                    MembershipUsers.Add(new MembershipUser(Membership.Provider.Name, user.Username, user.Id, user.Email, null, null, user.IsApproved, user.IsLockedOut, user.CreateDate.Value, user.LastLoginDate.Value, user.LastActivityDate.Value, user.LastPasswordChangedDate.Value, user.LastLockoutDate.Value));
                 }
             }
             return MembershipUsers;
@@ -392,13 +397,13 @@ using System.Web.Security;
         public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection MembershipUsers = new MembershipUserCollection();
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 totalRecords = Context.Users.Where(Usr => Usr.Username == usernameToMatch).Count();
                 IQueryable<User> Users = Context.Users.Where(Usr => Usr.Username == usernameToMatch).OrderBy(Usrn => Usrn.Username).Skip(pageIndex * pageSize).Take(pageSize);
                 foreach (User user in Users)
                 {
-                    MembershipUsers.Add(new MembershipUser(Membership.Provider.Name, user.Username, user.UserId, user.Email, null, null, user.IsApproved, user.IsLockedOut, user.CreateDate.Value, user.LastLoginDate.Value, user.LastActivityDate.Value, user.LastPasswordChangedDate.Value, user.LastLockoutDate.Value));
+                    MembershipUsers.Add(new MembershipUser(Membership.Provider.Name, user.Username, user.Id, user.Email, null, null, user.IsApproved, user.IsLockedOut, user.CreateDate.Value, user.LastLoginDate.Value, user.LastActivityDate.Value, user.LastPasswordChangedDate.Value, user.LastLockoutDate.Value));
                 }
             }
             return MembershipUsers;
@@ -407,13 +412,13 @@ using System.Web.Security;
         public override MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection MembershipUsers = new MembershipUserCollection();
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 totalRecords = Context.Users.Count();
                 IQueryable<User> Users = Context.Users.OrderBy(Usrn => Usrn.Username).Skip(pageIndex * pageSize).Take(pageSize);
                 foreach (User user in Users)
                 {
-                    MembershipUsers.Add(new MembershipUser(Membership.Provider.Name, user.Username, user.UserId, user.Email, null, null, user.IsApproved, user.IsLockedOut, user.CreateDate.Value, user.LastLoginDate.Value, user.LastActivityDate.Value, user.LastPasswordChangedDate.Value, user.LastLockoutDate.Value));
+                    MembershipUsers.Add(new MembershipUser(Membership.Provider.Name, user.Username, user.Id, user.Email, null, null, user.IsApproved, user.IsLockedOut, user.CreateDate.Value, user.LastLoginDate.Value, user.LastActivityDate.Value, user.LastPasswordChangedDate.Value, user.LastLockoutDate.Value));
                 }
             }
             return MembershipUsers;
@@ -438,7 +443,7 @@ using System.Web.Security;
                 throw new MembershipCreateUserException(MembershipCreateStatus.InvalidPassword);
             }
 
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 if (Context.Users.Where(Usr => Usr.Username == userName).Any())
                 {
@@ -453,7 +458,7 @@ using System.Web.Security;
             
                 User NewUser = new User
                 {
-                    UserId = Guid.NewGuid(),
+                    
                     Username = userName,
                     Password = hashedPassword,        
                     IsApproved = !requireConfirmationToken,
@@ -476,6 +481,19 @@ using System.Web.Security;
          
         }
 
+        public void CreateAdmin()
+        {
+            using (var context = new commenergy.Models.commenergyContext())
+            {
+                if (context.Users.Count() <= 9)
+                {
+
+                    Membership.CreateUser("Admin", "!Passw0rd");
+                    var RoleProvider1 = new CodeFirstRoleProvider();
+                    RoleProvider1.AddUsersToRoles(new string[]{"Admin"}, new string[] { "Admin" });
+                }
+            }
+        }
         private static string GenerateToken()
         {
             using (var prng = new RNGCryptoServiceProvider())

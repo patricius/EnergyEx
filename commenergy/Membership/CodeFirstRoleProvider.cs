@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Data.Entity;
 using System.Web.Security;
+using commenergy.Models;
+using commenergy.Models.Models;
 
     public class CodeFirstRoleProvider : RoleProvider
     {
@@ -26,7 +28,7 @@ using System.Web.Security;
             {
                 return false;
             }
-            using (DataContext Context = new DataContext())
+            using (var Context = new commenergyContext())
             {
                 Role Role = null;
                 Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -51,15 +53,15 @@ using System.Web.Security;
             {
                 return false;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergyContext Context = new commenergyContext())
             {
-                User User = null;
-                User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
+                commenergy.Models.Models.User User = null;
+               User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
                 if (User == null)
                 {
                     return false;
                 }
-                Role Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
+                commenergy.Models.Models.Role Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
                 if (Role == null)
                 {
                     return false;
@@ -70,7 +72,7 @@ using System.Web.Security;
 
         public override string[] GetAllRoles()
         {
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 return Context.Roles.Select(Rl => Rl.RoleName).ToArray();
             }
@@ -82,7 +84,7 @@ using System.Web.Security;
             {
                 return null;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 Role Role = null;
                 Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -103,7 +105,7 @@ using System.Web.Security;
             {
                 return null;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 User User = null;
                 User = Context.Users.FirstOrDefault(Usr => Usr.Username == username);
@@ -130,7 +132,7 @@ using System.Web.Security;
                 return null;
             }
 
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
 
                 return (from Rl in Context.Roles from Usr in Rl.Users where Rl.RoleName == roleName && Usr.Username.Contains(usernameToMatch) select Usr.Username).ToArray();
@@ -141,7 +143,7 @@ using System.Web.Security;
         {
             if (!string.IsNullOrEmpty(roleName))
             {
-                using (DataContext Context = new DataContext())
+                using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
                 {
                     Role Role = null;
                     Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -165,7 +167,7 @@ using System.Web.Security;
             {
                 return false;
             }
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 Role Role = null;
                 Role = Context.Roles.FirstOrDefault(Rl => Rl.RoleName == roleName);
@@ -192,7 +194,7 @@ using System.Web.Security;
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 List<User> Users = Context.Users.Where(Usr => usernames.Contains(Usr.Username)).ToList();
                 List<Role> Roles = Context.Roles.Where(Rl => roleNames.Contains(Rl.RoleName)).ToList();
@@ -212,7 +214,7 @@ using System.Web.Security;
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
         {
-            using (DataContext Context = new DataContext())
+            using (commenergy.Models.commenergyContext Context = new commenergy.Models.commenergyContext())
             {
                 foreach (String username in usernames)
                 {

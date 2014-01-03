@@ -1,36 +1,51 @@
-﻿var display = {
-    Title: ko.observable(),
-    CreatedOn: ko.observable(),
-    Email: ko.observable(),
-    Id: ko.observable(),
-    url: ko.observable(),
-    URLTo: ko.observable(),
-    Body: ko.observable(),
-    Key: ko.observable(),
-    Author: ko.observable(),
-    IpAddress: ko.observable(),
-    Comments: ko.observableArray([]),
+﻿$(function () {
+    DisplayVM.loadArticle();
+    ko.applyBindings(DisplayVM, document.getElementById("d"));
 
+
+});
+var DisplayVM = {
+    Article: ko.observableArray([]),
+    Comments: ko.observableArray([]),
     loadArticle: function () {
         var self = this;
 
         $.ajax({
 
-            url: "/Displays/" ,
+            url: window.location.href+"/display",
             contentType: "application/json; charset=utf-8",
-          
+        
             dataType: "json",
             success: function (data) {
-                self.Article(data.Article);
+                self.Article(data), self.Comments(data);
             },
+           
             error: function (err) {
                 alert(err.status + " : " + err.statusText);
             }
         });
-    }
-};
+    }};
 
-$(function () {
-    ko.applyBindings(display, document.getElementById("Display"));
-    display.loadArticle();
-});
+
+
+
+
+function Article(data) {
+    Article.Title = ko.observable(data.Title);
+    Article.Body = ko.observable(data.Body);
+    Article.Key = ko.observable(data.Key);
+}
+
+//function Articles(Articles)  {
+//    Articles: ko.observableArray([]),
+//    Title: ko.observable(),
+//    CreatedOn: ko.observable(),
+//    Email: ko.observable(),
+//    Id: ko.observable(),
+//    url: ko.observable(),
+//    URLTo: ko.observable(),
+//    Body: ko.observable(),
+//    Key: ko.observable(),
+//    Author: ko.observable(),
+//    IpAddress: ko.observable(),
+//    Comments: ko.observableArray([]),

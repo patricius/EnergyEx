@@ -37,6 +37,7 @@ namespace commenergy.Models.Models
         public virtual DateTime? PasswordVerificationTokenExpirationDate { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }
+        public virtual List<Article> Articles { get; set; }
     }
 }
 
