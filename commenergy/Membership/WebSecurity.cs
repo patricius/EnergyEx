@@ -100,6 +100,7 @@ using System.Web.Security;
 
         public static int GetUserId(string userName)
         {
+            
             MembershipUser user = Membership.GetUser(userName);
             return (int)user.ProviderUserKey;
         }

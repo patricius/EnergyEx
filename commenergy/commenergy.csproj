@@ -426,6 +426,7 @@
     <Content Include="Scripts\ViewModels\CreateComment.js" />
     <Content Include="Scripts\ViewModels\display.js" />
     <Content Include="Scripts\ViewModels\Index.js" />
+    <Content Include="Scripts\ViewModels\user.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -484,6 +485,7 @@
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
     <Content Include="Views\Articles\CreateComment.cshtml" />
+    <Content Include="Views\Articles\UserDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\commenergy.Models\commenergy.Layer.csproj">

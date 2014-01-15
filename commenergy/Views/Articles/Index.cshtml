@@ -65,7 +65,8 @@
               <div style="width: 50%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">        
                   <h2 data-bind ="text: Title"></h2>
                   <p  data-bind="text: Body"></p>
-                  <p><a class="btn btn-default" data-bind ="attr: URLTo" role="button">View details &raquo;</a></p>
+                  <a data-bind="attr: { href:URLTo}"></a>
+                  @*<p><a class="btn btn-default" data-bind ="attr: URLTo" role="button">View details &raquo;</a></p>*@
               </div>   
            
               @*//<a href data-bind ="text: URLto"></a>*@

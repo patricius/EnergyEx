@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "UserDashboard";
+}
+
+<h2>UserDashboard</h2>
+
+<div data-bind="text:Username">
+
+    <div class="row" data-bind="foreach: Article">
+        <div class="col-md-4">
+            <div style="width: 25%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">
+                <h2 data-bind="text: Title "></h2>
+                <p data-bind="text: Body"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+    <script src="~/Scripts/ViewModels/user.js"></script>
+   
+?
+}

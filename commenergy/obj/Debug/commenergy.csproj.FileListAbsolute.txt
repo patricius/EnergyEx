@@ -214,3 +214,4 @@ C:\omrails\EnergyEx\commenergy\obj\Debug\commenergy.pdb
 C:\omrails\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.AddUserIdArticle.resources
 C:\omrails\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.addmigrationfixnullable.resources
 C:\omrails\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.useridnullable.resources
+C:\omrails\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.commentconstructorarticle.resources
