@@ -214,39 +214,20 @@ public class ArticlesController : Controller
     }
 
 
-    public ActionResult UserDashboard(){
-
-        return View();
+    public ViewResult UserDashboard()
+    {
+        string username = WebSecurity.User.Identity.Name;
+        var UserArticles = _articleRepository.FindByAuthor(username);
+        return View(UserArticles);
     }
-    
+
     public JsonResult UserInfo()
     {
-        var commtext = new commenergy.Models.commenergyContext();
+       
         string username = WebSecurity.User.Identity.Name;
-        var model = new commenergy.Models.Models.User();
-        int UserId = WebSecurity.GetUserId(username);
-
-        try
-        {
-            var userDataCollection = from d in commtext.Users
-                                     where d.Id == UserId
-                                     select new
-                                     {
-                                         d.Articles,
-                                         d.Username,
-
-                                     };
-            var userData = userDataCollection.FirstOrDefault();
-            if (userData != null)
-            {
-
-            }
-        }
-        catch (Exception)
-        {
+        var UserArticles = _articleRepository.FindByAuthor(username);
+        return Json(UserArticles, JsonRequestBehavior.AllowGet);
 
         }
-        return Json(UserInfo(), JsonRequestBehavior.AllowGet);
     }
-}
 

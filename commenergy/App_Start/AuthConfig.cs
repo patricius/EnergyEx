@@ -19,7 +19,7 @@
             //    appId: "",
             //    appSecret: "");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            Microsoft.Web.WebPages.OAuth.OAuthWebSecurity.RegisterGoogleClient();
         }
     }
 }

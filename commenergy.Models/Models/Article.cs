@@ -15,7 +15,7 @@ namespace commenergy.Models
         public string Author { get; set; }
         public int Id { get; set; }
         public int? UserId { get; set; }
-
+        public string Abstract { get; set; }
         [StringLength(75)]
        
         public string Key { get; set; }
@@ -37,7 +37,7 @@ namespace commenergy.Models
 
         public Article()
         {
-            Comments = new List<Comment>();
+           
         }
 
         //[EmailAddress]

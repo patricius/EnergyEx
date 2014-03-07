@@ -1,21 +1,18 @@
 ﻿@model commenergy.Models.Article
 
 @{
-    ViewBag.Title = "Display";
+    ViewBag.Title = "Article";
 }
 
 <h2>Display</h2>
 <div id="d"> 
-    <div class="row" data-bind="foreach: Article">
-    <div class="col-md-4">
-        <div style="width: 25%; height: auto;  text-align:center;padding: 22px 10px 0px 0px">
+    <div class="container" data-bind="foreach: Article">
+   
             <h2 data-bind="text: Title"></h2>
             <p data-bind="text: Body"></p>
         </div>
-        
         </div>
-    </div>
-    </div>
+  
         @*//<a href data-bind ="text: URLto"></a>*@
         @*//<ul data-bind = "foreach:Comments">
             <li data-bind="text:Author"></li>
@@ -25,23 +22,35 @@
 
 <div id="Comment">
 
-
-
-   
-
-
-    Email:  <input type="text" data-bind="value: Email" />
+    @*Email:  <input type="text" data-bind="value: Email" />
     Author: <input type="text" data-bind="value: Author" />
 
     Body:
-    <input type="text" data-bind="value: Body" />
+    <input type="text" data-bind="value: Body" width="48" height="48"/>
   
 
 
     IpAddress:
     <input type="text" data-bind="value: IpAddress" />
 
-    <button class="btn-primary" data-bind="click: addComment">Save</button>
+    <button class="btn-primary" data-bind="click: addComment">Save</button>*@
+
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'enex'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
 </div>
 
@@ -55,6 +64,5 @@
         @section Scripts {
             <script src="~/Scripts/knockout-3.0.0.js"></script>
             <script src="~/Scripts/ViewModels/display.js"></script>
-<script src="~/Scripts/ViewModels/CreateComment.js"></script>
 
         }

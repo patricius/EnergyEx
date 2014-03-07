@@ -82,7 +82,10 @@ namespace commenergy.Models
             return context.Articles.Find(id);
         }
 
-
+        public Article FindByAuthor (string author)
+        {
+            return context.Articles.First(i=>i.Author == author);
+        }
        public Article Find(string key)
         {
             return context.Articles.Include(i => i.Comments).First(e => e.Key == key);
@@ -116,6 +119,7 @@ namespace commenergy.Models
         IQueryable<Article> AllIncluding(params Expression<Func<Article, object>>[] includeProperties);
         Article Find(int id);
         Article Find(string key);
+        Article FindByAuthor(string Author);
         void InsertOrUpdate(Article article);
         void Delete(int id);
         void Save();

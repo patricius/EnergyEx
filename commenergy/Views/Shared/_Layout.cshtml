@@ -4,21 +4,13 @@
  @Styles.Render("~/Content/bootstrap-theme.css")
 @Styles.Render("~/Content/bootstrap.css")
 @Styles.Render("~/Content/JUMBOTRON.css")
-@Styles.Render("~/Content/css")
-
-
-
-
 
         <meta charset="utf-8">
-        <title>@ViewBag.Title : DOGGS</title>
+        <title>@ViewBag.Title</title>
         @RenderSection("meta", required: false)
         @RenderSection("Featured", required: false)
-        <meta name="viewport" content="width=device-width, initial-scale=0.5">
-
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -32,7 +24,7 @@
         </div>
         <div class="navbar-collapse collapse">
           
-            <form action="Account/Login" class="navbar-form navbar-right" method="post">
+            <form action="@Url.Action("Login", "Account")" class="navbar-form navbar-right" method="post">
 @Html.AntiForgeryToken()
                 <div class="form-group">
 
@@ -56,31 +48,23 @@
             <img src="~/Content/MonsterDrinksMain.jpg" alt="Energy" />
 
         </div>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more </a></p>
+        <p><a class="btn btn-primary btn-lg" role="button" href="Home/About">Learn more </a></p>
       </div>
 
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
-          <div class="col-lg-4">
+    
               @RenderBody()
-            </div>
-    </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
+       
 
-      <hr>
+
 
       <footer>
         <p>&copy; Company 2013</p>
       </footer>
      <!-- /container -->
-       
+       </div>
       
     <!-- Bootstrap core JavaScript
     ================================================== -->

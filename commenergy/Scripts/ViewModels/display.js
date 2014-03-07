@@ -6,7 +6,7 @@
 });
 var DisplayVM = {
     Article: ko.observableArray([]),
-    Comments: ko.observableArray([]),
+
     loadArticle: function () {
         var self = this;
 
@@ -17,7 +17,7 @@ var DisplayVM = {
         
             dataType: "json",
             success: function (data) {
-                self.Article(data), self.Comments(data);
+                self.Article(data);
             },
            
             error: function (err) {
@@ -34,6 +34,7 @@ function Article(data) {
     Article.Title = ko.observable(data.Title);
     Article.Body = ko.observable(data.Body);
     Article.Key = ko.observable(data.Key);
+    Article.Comments = ko.observableArray(data.Comments);
 }
 
 //function Articles(Articles)  {

@@ -9,6 +9,7 @@ var indexVM = {
     RowCount: ko.observable(),
     URLTo: ko.observable(),
     Title: ko.observable(),
+    Abstract: ko.observable(),
     Body: ko.observable(),
     Key: ko.observable(),
     Comments: ko.observableArray([]),

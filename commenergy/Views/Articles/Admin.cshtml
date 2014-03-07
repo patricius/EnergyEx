@@ -25,13 +25,58 @@
             Comments
         </th>
     </tr>
+</table>
 
-@foreach (var item in Model.Results) {
+
+    @Html.AntiForgeryToken()
+
+    <title>Index</title>
+    <h2>Index</h2>
+    <input type="hidden" id="serverJSON" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)" />
+    <p>
+        <button class="btn btn-primary" id="create">Create</button>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Key
+            </th>
+            <th>
+                Value
+            </th>
+            <th></th>
+        </tr>
+
+        <tbody data-bind="template: { name: Mode, data: $data }">
+            <tr data-bind="foreach: Results"></tr>
+        </tbody>
+    </table>
+
+    <script type="text/html" id="display">
+        <td data-bind="text: Title"></td>
+        <td data-bind="text: CreatedOn"></td>
+        <td>
+            <button class="btn btn-success kout-edit" data-bind="click: Edit">Edit</button>
+            <button class="btn btn-danger kout-delete">Delete</button>
+        </td>
+    </script>
+
+    <script type="text/html" id="edit">
+        <td><input type="text" data-bind="value: Key" /></td>
+        <td><input type="text" data-bind="value: Title" /></td>
+        <td><input type="text" data-bind="value: Body" /></td>
+        <td>
+            <button class="btn btn-success kout-update" data-bind="click: Update">Update</button>
+            <button class="btn btn-danger kout-cancel">Cancel</button>
+        </td>
+    </script>
+
+@*@foreach (var item in Model.Results) {
     <tr>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-           @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
         <td>
                         @String.Format("{0:g}", item.CreatedOn)
@@ -45,7 +90,7 @@
     </tr>
 }
 
-</table>
+</table>*@
 
 
 
@@ -71,4 +116,9 @@
         }
     }
     
+}
+@section Scripts {
+
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+    <script src="~/Scripts/ViewModels/admin.js"></script>
 }
