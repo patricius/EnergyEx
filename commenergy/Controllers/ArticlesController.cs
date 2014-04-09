@@ -1,14 +1,17 @@
-    using System;
-    using System.Security.AccessControl;
-    using System.Web;
-    using System.Web.Http;
-    using System.Web.Mvc;
-    using commenergy.Controllers;
-    using commenergy.Models;
-    using System.Linq;
+using System;
+using System.Security.AccessControl;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using commenergy.Controllers;
+using commenergy.Models;
+using System.Linq;
 using commenergy.Models.Models;
-    using Newtonsoft.Json;
-    using JsonSerializer = EventStore.Serialization.JsonSerializer;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 public class ArticlesController : Controller
 {
@@ -59,6 +62,33 @@ public class ArticlesController : Controller
 
         return Json(_articleRepository.GetsArticles(currentPage, PageSize), JsonRequestBehavior.AllowGet);
     }
+
+      [System.Web.Http.HttpPost]
+    public JsonResult ArticleNavNext(int CurrentPage)
+    {
+        var newPage = CurrentPage + 1;
+        return Json(_articleRepository.GetsArticles(newPage, PageSize), JsonRequestBehavior.AllowGet);
+    }
+
+
+      [System.Web.Http.HttpPost]
+      public JsonResult ArticleNavPrev(int CurrentPage)
+      {
+          int newPage;
+          if (CurrentPage < 1)
+          {
+              newPage = 1;
+          }
+
+          else
+          {
+              newPage = CurrentPage - 1;
+          }
+
+          return Json(_articleRepository.GetsArticles(newPage, PageSize), JsonRequestBehavior.AllowGet);
+      }
+
+
 
     [System.Web.Mvc.Authorize]
     public ViewResult Admin()
@@ -123,7 +153,7 @@ public class ArticlesController : Controller
 
     public JsonResult GetAllArticles()
     {
-        return Json(_articleRepository.GetsArticles(1, 4), JsonRequestBehavior.AllowGet);
+        return Json(_articleRepository.GetsArticles(1, 100), JsonRequestBehavior.AllowGet);
     }
     //
     //
@@ -142,19 +172,22 @@ public class ArticlesController : Controller
     [ValidateInput(false)]
     public JsonResult Create(Article article)
     {
+        if (ModelState.IsValid)
+        {
 
+            article.Author = User.Identity.Name;
+            article.UserId = User.Identity.GetUserId();
+            article.Key = Utilities.WebSafeMaker(article.Key);
+            article.CreatedOn = DateTime.Now;
+            article.Body = article.Body;
+            article.ImagePath = article.ImagePath;
+            article.Title = article.Title.Trim();
+            article.MetaDescription = article.MetaDescription;
 
-        article.Author = User.Identity.Name;
-        article.UserId = WebSecurity.GetUserId(article.Author);
-        article.Key = Utilities.WebSafeMaker(article.Key);
-        article.CreatedOn = DateTime.Now;
-        article.Body = article.Body;
-        article.Title = article.Title.Trim();
-        article.MetaDescription = article.MetaDescription;
+            _articleRepository.InsertOrUpdate(article);
 
-        _articleRepository.InsertOrUpdate(article);
-
-        _articleRepository.Save();
+            _articleRepository.Save();
+        }
         return Json(article, JsonRequestBehavior.AllowGet);
     }
 
@@ -216,18 +249,102 @@ public class ArticlesController : Controller
 
     public ViewResult UserDashboard()
     {
-        string username = WebSecurity.User.Identity.Name;
+        string username = User.Identity.Name;
         var UserArticles = _articleRepository.FindByAuthor(username);
         return View(UserArticles);
     }
 
     public JsonResult UserInfo()
     {
-       
-        string username = WebSecurity.User.Identity.Name;
+
+        string username = User.Identity.Name;
         var UserArticles = _articleRepository.FindByAuthor(username);
+        var UserArticles4 = _articleRepository.FindByAuthor(username);
         return Json(UserArticles, JsonRequestBehavior.AllowGet);
 
-        }
     }
 
+
+    //public JsonResult SubmitRating(int Id, int Rating)
+    //{
+
+
+    //    var currentArticle = _articleRepository.Find(Id);
+
+    //    currentArticle.Key = Utilities.WebSafeMaker(currentArticle.Key);
+
+    //    currentArticle.UpdatedOn = DateTime.UtcNow;
+
+    //    currentArticle.Body = currentArticle.Body;
+    //    currentArticle.Title = currentArticle.Title;
+    //    currentArticle.MetaDescription = currentArticle.MetaDescription;
+    //    currentArticle.Ratings.Add(Rating);
+
+    //    _articleRepository.InsertOrUpdate(currentArticle);
+
+    //    _articleRepository.Save();
+    //    return Json(currentArticle, JsonRequestBehavior.AllowGet);
+    //}
+
+
+
+    public JsonResult SaveRating(int Id, float rating)
+    {
+
+        var post = _articleRepository.Find(Id);
+
+        if (post.Ratings == null)
+            post.Ratings = new List<Ratings>();
+
+        if (User.Identity.IsAuthenticated)
+        {
+      
+            var postRating = new Ratings()
+            {
+                ArticleId = Id,
+                Rating = rating,
+                DateTime = DateTime.Now,
+
+            };
+            if (User.Identity.IsAuthenticated)
+            {
+                postRating.UserId = User.Identity.GetUserId();
+                post.Ratings.Add(postRating);
+                post.AvgRating = post.Ratings.Average(a => a.Rating);
+            }
+
+            _articleRepository.InsertOrUpdate(post);
+
+            _articleRepository.Save();
+        }
+        return Json(post.AvgRating, JsonRequestBehavior.AllowGet);
+    }
+
+
+        [System.Web.Http.HttpPost]
+        public JsonResult Upload()
+        {
+          for (int i = 0; i < Request.Files.Count; i++) {
+        // for each file being sent over...
+        HttpPostedFileBase file = Request.Files[i];
+ 
+        // Example of gathering information from each file
+        int fileSize = file.ContentLength;
+        string fileName = file.FileName;
+        string mimeType = file.ContentType;
+ 
+        // Open input stream
+        System.IO.Stream fileContent = file.InputStream;
+        file.SaveAs(Server.MapPath("~/Content/") + fileName); //File will be saved in application root
+       
+        }
+    // Return JSON
+          
+
+    return Json("File Uploaded!");
+
+}
+
+
+
+}

@@ -5,16 +5,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using commenergy.Models.Models;
+using System.Linq;
 
 namespace commenergy.Models
 {
     public class Article
     {
+
+
         [Display(Name = "User Name")]
         [DisplayFormat(NullDisplayText = "anonymous")]
         public string Author { get; set; }
         public int Id { get; set; }
-        public int? UserId { get; set; }
+       [DatabaseGenerated(DatabaseGeneratedOption.None)]
+       
+        public string UserId { get; set; }
+       [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }
+        
         public string Abstract { get; set; }
         [StringLength(75)]
        
@@ -37,7 +46,11 @@ namespace commenergy.Models
 
         public Article()
         {
-           
+            Ratings = new List<Ratings>();
+            if (Ratings.Count != 0)
+            {
+                AvgRating = Ratings.Average(a => a.Rating);
+            }
         }
 
         //[EmailAddress]
@@ -51,7 +64,18 @@ namespace commenergy.Models
         //public string URL { get; set; }
 
 
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+
+      
+
+
+
+
+        public float? AvgRating { get; set; }
+       
+        public virtual ICollection<Ratings> Ratings  { get; set; }
+
+        public string ImagePath { get; set; }
 
         /// <summary>
         /// A link to the article

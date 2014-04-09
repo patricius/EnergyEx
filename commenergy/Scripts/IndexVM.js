@@ -2,37 +2,84 @@
 var urlPath = window.location.href;
 
 
-var indexVM = {    
-    Results: ko.observableArray([]),
-    PageCount: ko.observable(),
-    PageSize: ko.observable(),
-    RowCount: ko.observable(),
-    URLTo: ko.observable(),
-    Title: ko.observable(),
-    Abstract: ko.observable(),
-    Body: ko.observable(),
-    Key: ko.observable(),
-    Comments: ko.observableArray([]),
+function index(data) {    
+    this.Results = ko.observableArray([]);
+    this.PageCount = ko.observable();
+    this.CurrentPage =  ko.observable();
+    this.PageSize = ko.observable(),
+    this.RowCount =  ko.observable();
+    this.URLTo = ko.observable();
+    this.Title = ko.observable();
+    this.Abstract = ko.observable();
+    this.Body =  ko.observable();
+    this.Key = ko.observable();
+    this.UserId = ko.observable(),
+    this.Comments = ko.observableArray([]);
+}
+
+var indexVM = new index(); 
     
-    loadArticles: function() {
-        var self = this;
+var loadArticles = function() {
+    var self = this;
+ 
+    $.ajax({
+
+        url: "Articles/ArticleLists/",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+            indexVM.Results(data.Results);
+            indexVM.CurrentPage(data.CurrentPage);
+        },
+
+        error: function(err) {
+            alert(err.status + " : " + err.statusText);
+        }
+    });
+};
+
+var loadNext = function(number) {
+    var self = this;
 
         $.ajax({
-
-            url: "Articles/ArticleLists/",
-            contentType: "application/json; charset=utf-8",
+            type: 'post',
+            url: "Articles/ArticleNavNext", 
             dataType: "json",
+            data: ko.toJSON({ CurrentPage: indexVM.CurrentPage }),
+            contentType: "application/json; charset=utf-8",
             success: function(data) {
-                self.Results(data.Results);
+                indexVM.Results(data.Results);
+                indexVM.CurrentPage(data.CurrentPage);
             },
             error: function(err) {
                 alert(err.status + " : " + err.statusText);
             }
         });
     }
-};
+
+
+
+var loadPrevious = function (number) {
+    var self = this;
+
+    $.ajax({
+        type: 'post',
+        url: "Articles/ArticleNavPrev",
+        dataType: "json",
+        data: ko.toJSON({ CurrentPage: indexVM.CurrentPage }),
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            indexVM.Results(data.Results);
+            indexVM.CurrentPage(data.CurrentPage);
+        },
+        error: function (err) {
+            alert(err.status + " : " + err.statusText);
+        }
+    });
+}
+
     
 $(function () {
     ko.applyBindings(indexVM);
-    indexVM.loadArticles();
+    loadArticles();
 });

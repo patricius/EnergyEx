@@ -4,72 +4,98 @@
     ViewBag.Title = "Admin";
 }
 
-<h2>Admin</h2>
+<div id="body">
 
-<h1>Index</h1>
+   
+        <table class="table table-striped" id="Articles" data-bind="visible: Results().length > 0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Key</th>
+                    <th>MetaDescription</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: Results">
+                <tr>
+                    <td data-bind="text: Id"></td>
+                    <td data-bind="text: Title"></td>
+                    <td data-bind="text: MetaDescription"></td>
+                    <td data-bind="text: Key"></td>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th></th>
-        <th>
-            CreatedOn
-        </th>
-        <th>
-            Title
-        </th>
-      
-        <th>
-            Comments
-        </th>
-    </tr>
-</table>
+                    <td>
+                        <button data-bind="click: $root.edit">Edit</button>
+                        <button data-bind="click: $root.delete">Delete</button>
 
+                    </td>
 
-    @Html.AntiForgeryToken()
+                </tr>
+            </tbody>
 
-    <title>Index</title>
-    <h2>Index</h2>
-    <input type="hidden" id="serverJSON" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)" />
-    <p>
-        <button class="btn btn-primary" id="create">Create</button>
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                Key
-            </th>
-            <th>
-                Value
-            </th>
-            <th></th>
-        </tr>
+        </table>
+        <br />
+        <div style="border-top: solid 2px  #282828; width: 430px; height: 10px">&nbsp;</div>
 
-        <tbody data-bind="template: { name: Mode, data: $data }">
-            <tr data-bind="foreach: Results"></tr>
-        </tbody>
-    </table>
+        <div data-bind="if: Article">
+            <div>
+                <h2>Update Article</h2>
+            </div>
+            <div>
+                <label for="ArticleId" data-bind="visible: true">ID</label>
+                <label data-bind="text: Article().Id, visible: true"></label>
 
-    <script type="text/html" id="display">
-        <td data-bind="text: Title"></td>
-        <td data-bind="text: CreatedOn"></td>
-        <td>
-            <button class="btn btn-success kout-edit" data-bind="click: Edit">Edit</button>
-            <button class="btn btn-danger kout-delete">Delete</button>
-        </td>
-    </script>
+            </div>
+            <div>
+                <label for="name">Title</label>
+                <input data-bind="value: Article().Title" type="text" title="Name" />
+            </div>
 
-    <script type="text/html" id="edit">
-        <td><input type="text" data-bind="value: Key" /></td>
-        <td><input type="text" data-bind="value: Title" /></td>
-        <td><input type="text" data-bind="value: Body" /></td>
-        <td>
-            <button class="btn btn-success kout-update" data-bind="click: Update">Update</button>
-            <button class="btn btn-danger kout-cancel">Cancel</button>
-        </td>
-    </script>
+            <div>
+                <label for="MetaDescription">MetaDescription</label>
+                <input data-bind="value: Article().MetaDescription" type="text" title="Category" />
+            </div>
+
+            <div>
+                <label for="Key">Key</label>
+                <input data-bind="value: Article().Key" type="text" title="Key" />
+
+            </div>
+            <br />
+            <div>
+                <button data-bind="click: $root.update">Update</button>
+                <button data-bind="click: $root.cancel">Cancel</button>
+
+            </div>
+        </div>
+
+        <div data-bind="ifnot: Article()">
+            <div>
+                <h2>Add New Article</h2>
+            </div>
+            <div>
+                <label for="Title">Title</label>
+                <input data-bind="value: $root.Title" type="text" title="Title" />
+            </div>
+
+            <div>
+                <label for="category">Category</label>
+                <input data-bind="value: $root.MetaDescription" type="text" title="MetaDescription" />
+            </div>
+
+            <div>
+                <label for="price">Price</label>
+                <input data-bind="value: $root.Key" type="text" title="Key" />
+            </div>
+            <br />
+            <div>
+                <button data-bind="click: $root.create">Save</button>
+                <button data-bind="click: $root.reset">Reset</button>
+
+            </div>
+        </div>
+
+</div> 
 
 @*@foreach (var item in Model.Results) {
     <tr>
@@ -95,7 +121,7 @@
 
 
  
-@{
+@*@{
     int pageCount = Model.PageCount;
 
     for (int pageNumber = 1; pageNumber <= pageCount; pageNumber++)
@@ -114,9 +140,9 @@
         {
     <a href="@Url.Content("~/articles/admin?page=" + pageNumber.ToString())">@pageNumber.ToString()</a>  
         }
-    }
+    }*@
     
-}
+
 @section Scripts {
 
     <script src="~/Scripts/knockout-3.0.0.js"></script>

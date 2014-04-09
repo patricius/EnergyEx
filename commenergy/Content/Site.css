@@ -6,6 +6,9 @@ textarea {
     color: #222;
 }
 
+
+
+
 body {
     font-size: 1em;
     line-height: 1.4;
@@ -705,3 +708,9 @@ a.h_img:hover img
 
 .fadein { position:relative; width:300px; height:300px; }
 .fadein img { position:relative; left:0; top:0; }
+
+
+#preview {
+    border: solid 1px #000;
+    margin: 0.5em 0;
+}

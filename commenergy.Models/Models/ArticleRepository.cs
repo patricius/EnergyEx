@@ -4,15 +4,17 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Data.Entity;
 using System.Text;
+using commenergy.Models;
 
 namespace commenergy.Models
 { 
     public class ArticleRepository : IArticleRepository
     {
         commenergyContext context = new commenergyContext();
-
+        
         public IQueryable<Article> All
         {
+           
             get { return context.Articles; }
         }
 
@@ -29,6 +31,7 @@ namespace commenergy.Models
 
         public void InsertOrUpdate(Article article)
         {
+           
             if (article.Id == default(int)) {
                 // New entity
                 context.Articles.Add(article);
@@ -88,11 +91,13 @@ namespace commenergy.Models
         }
        public Article Find(string key)
         {
-            return context.Articles.Include(i => i.Comments).First(e => e.Key == key);
+            context.Configuration.ProxyCreationEnabled = false;
+            return context.Articles.Include(i => i.Ratings).First(e => e.Key == key);
         }
 
         public PagedResult<Article> GetsArticles(int page, int pageSize)
         {
+            context.Configuration.ProxyCreationEnabled = false;
             var results = context.Articles.OrderByDescending(o => o.CreatedOn).Include(i => i.Comments);
 
             var result = GetPagedResultForQuery(results, page, pageSize);
@@ -102,13 +107,24 @@ namespace commenergy.Models
 
         private static PagedResult<Article> GetPagedResultForQuery(IQueryable<Article> query, int page, int pageSize)
         {
-            var result = new PagedResult<Article> {CurrentPage = page, PageSize = pageSize, RowCount = query.Count()};
-            var pageCount = (double)result.RowCount / pageSize;
-            result.PageCount = (int)Math.Ceiling(pageCount);
-            var skip = (page - 1) * pageSize;
-            result.Results = query.Skip(skip).Take(pageSize) .ToList();
-            
-            return result;
+            try
+            {
+                var result = new PagedResult<Article> { CurrentPage = page, PageSize = pageSize, RowCount = query.Count() };
+                var pageCount = (double)result.RowCount / pageSize;
+                result.PageCount = (int)Math.Ceiling(pageCount);
+                var skip = (page - 1) * pageSize;
+                result.Results = query.Skip(skip).Take(pageSize).ToList();
+
+                 return result;
+            }
+            catch (ArgumentException e)
+            {
+                throw e;
+
+            }
+
+           
+            }
         }
     }
 
@@ -124,4 +140,3 @@ namespace commenergy.Models
         void Delete(int id);
         void Save();
     }
-}

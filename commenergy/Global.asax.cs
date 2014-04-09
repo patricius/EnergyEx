@@ -24,7 +24,7 @@ namespace commenergy
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-
+            OAuthProviders.Configure();
         }
     }
 }

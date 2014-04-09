@@ -123,3 +123,15 @@ C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\ru\System.Spati
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\zh-Hant\System.Spatial.resources.dll
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Layer.csproj.App.config
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.l.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Layer.csproj.GenerateResource.Cache
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.s.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.d.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.fk.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.appdbmodelupdate.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.e.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.admin.resources

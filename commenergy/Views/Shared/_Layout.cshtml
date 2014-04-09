@@ -20,37 +20,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">EnergyExchange</a>
+          <a class="navbar-brand" href="@Url.Action("Index", "Articles")">Energy Drink Exchange</a>
         </div>
         <div class="navbar-collapse collapse">
-          
-            <form action="@Url.Action("Login", "Account")" class="navbar-form navbar-right" method="post">
-@Html.AntiForgeryToken()
-                <div class="form-group">
-
-                    <input type="text" placeholder="Username" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
+            @Html.Partial("_LoginPartial")
+               
+            
         </div><!--/.navbar-collapse -->
       </div>
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h2>Energy Drink Reviews/Tips </h2>
-        <div class="fadein">
-            <img src="~/Content/drinks1.jpg" alt="Energy" />
-            <img src="~/Content/drinks2.jpg" alt="Energy" />
-            <img src="~/Content/MonsterDrinksMain.jpg" alt="Energy" />
+        <div class="container">
+            <div class="fadein">
+                <img src="~/Content/drinks1.jpg" alt="Energy" />
+                <img src="~/Content/drinks2.jpg" alt="Energy" />
+                <img src="~/Content/MonsterDrinksMain.jpg" alt="Energy" />
 
+            </div>
+            <p><a class="btn btn-primary btn-lg" role="button" href="Home/About">Learn more </a></p>
         </div>
-        <p><a class="btn btn-primary btn-lg" role="button" href="Home/About">Learn more </a></p>
-      </div>
-
+        </div>
 
     <div class="container">
       <!-- Example row of columns -->
@@ -81,7 +72,7 @@ $(function () {
            .next('img').fadeIn()
            .end().appendTo('.fadein');
     },
-      3000);
+      9000);
 });
 </script>
         @RenderSection("Scripts", required: false)

@@ -8,7 +8,7 @@ namespace commenergy.Migrations
         public override void Up()
         {
            AlterColumn("dbo.Articles", "Abstract", c => c.String());
-            Sql("UPDATE dbo.Articles SET Abstract = LEFT(Body, 100) WHERE Abstract IS NULL"); 
+           
         }
         
         public override void Down()

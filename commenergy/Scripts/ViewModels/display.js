@@ -34,7 +34,9 @@ function Article(data) {
     Article.Title = ko.observable(data.Title);
     Article.Body = ko.observable(data.Body);
     Article.Key = ko.observable(data.Key);
+    Article.ImagePath = ko.observable(data.ImagePath);
     Article.Comments = ko.observableArray(data.Comments);
+    Article.AvgRating = ko.observable(data.AvgRating);
 }
 
 //function Articles(Articles)  {

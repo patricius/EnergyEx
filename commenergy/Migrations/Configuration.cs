@@ -1,9 +1,12 @@
 namespace commenergy.Migrations
 {
     using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using commenergy.Models.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<commenergy.Models.commenergyContext>
     {
@@ -27,6 +30,11 @@ namespace commenergy.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            }
         }
     }
-}
+
+
+
+ 

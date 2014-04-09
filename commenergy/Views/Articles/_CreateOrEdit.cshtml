@@ -4,46 +4,49 @@
 
 @Styles.Render("~/content/bootstrap.css")
 
-  <script src="~/Scripts/jquery-2.0.3.min.js"></script>
-<script src="~/Scripts/knockout-3.0.0.js"></script>
+<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script type="text/javascript" src="/scripts/tinymce/jquery.tinymce.min.js"> </script>
+<script type="text/javascript" src="/scripts/wysiwyg.js"> </script>
  
-
 <!doctype html>
 <html>
     <head><title> Create or Modify Existing Article </title></head>
     <body>          
                 
                 
-        <table aria-checked="true">
-            <tr>
-                <td>Key</td>
-                <td><input type="text" data-bind="value: Key"/></td>
-            </tr>
-            <tr>
-                <td>Title</td>
-                <td><input type="text" data-bind="value: Title"/></td>
+        <div>
+            <div><form id="uploader">
+                     <input id="fileInput" type="file" multiple data-bind="value:ImagePath">
+                    <input type="submit" value="Upload file" />
+                     
+                </form>
+            </div>
+              <div>
+                <span>Key</span>
+                <span><input type="text" data-bind="value: Key"/> </span>
+          
+                <span>Title</span>
+                <span><input type="text" data-bind="value: Title"/></span>
                 
-            </tr>
-            <tr>
-                <td>Body</td>
-                <td><textarea data-bind="value: Body"></textarea></td>
-            </tr>
-             <tr>
-            <td>MetaDescription</td>
-            <td><input type="text" data-bind="value: MetaDescription"/></td> 
-                 </tr>
-            <tr>
-            <td colspan="2">
-                <button class ="btn-primary" data-bind="click: addArticle">Save</button>
-            </td>
-        </tr>
-        </table>
+            </div>
+            <div>
+                <div id="preview" data-bind="text: Body"></div>
+                <textarea data-bind="wysiwyg : Body"> </textarea>
+</div>
+             
+            <span>MetaDescription</span>
+            <span><input type="text" data-bind="value: MetaDescription"/></span>
+            
+            
+            <span> <button class ="btn-primary" data-bind="click: addArticle">Save</button> </span>
+           </div>
                    
                     <a href="@Url.Action("Index", "Articles")" class="btn btn-primary">Cancel</a>
              
     </body>
 </html>
 @section Scripts {
-    <script src="~/Scripts/ViewModels/Create.js"></script>
-   
+<script src="~/Scripts/ViewModels/Create.js"></script>
+
+
 }
