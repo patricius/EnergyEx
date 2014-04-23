@@ -1,13 +1,12 @@
-﻿ 
-using System.ComponentModel.DataAnnotations;
-
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using commenergy.Models.Models;
 using commenergy.Models;
 
-namespace commenergy.models.models{
-     public class ExternalLoginViewModel
+namespace commenergy.Models.AccountModels
+{
+    public class ExternalLoginViewModel
     {
 
         [Required]
@@ -15,8 +14,8 @@ namespace commenergy.models.models{
         public string Action { get; set; }
         public string ReturnUrl { get; set; }
     }
-    
-public class ManageUserViewModel
+
+    public class ManageUserViewModel
     {
         [Required]
         [DataType(DataType.Password)]
@@ -36,20 +35,20 @@ public class ManageUserViewModel
             "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
-public class ExternalLoginConfirmationViewModel
-{
-    [Required]
-    [Display(Name = "User name")]
-    public string UserName { get; set; }
-    public string LoginProvider { get; set; }
-    public string Action { get; set; }
-    public string ReturnUrl { get; set; }
+    public class ExternalLoginConfirmationViewModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+        public string LoginProvider { get; set; }
+        public string Action { get; set; }
+        public string ReturnUrl { get; set; }
 
-    public string FirstName { get; set; }
+        public string FirstName { get; set; }
 
-    public string LastName { get; set; }
-    public string Email { get; set; }
-}
+        public string LastName { get; set; }
+        public string Email { get; set; }
+    }
 
     public class LoginViewModel
     {
@@ -202,4 +201,35 @@ public class ExternalLoginConfirmationViewModel
         [Required]
         public string RoleName { get; set; }
     }
+
+
+    public class RoleViewModel
+    {
+        public string RoleName { get; set; }
+        public string Description { get; set; }
+
+        public RoleViewModel() { }
+        public RoleViewModel(IdentityRole role)
+        {
+            this.RoleName = role.Name;
+            //this.Description = role.Description;
+        }
+    }
+
+
+    public class EditRoleViewModel
+    {
+        public string OriginalRoleName { get; set; }
+        public string RoleName { get; set; }
+        //public string Description { get; set; }
+
+        public EditRoleViewModel() { }
+        public EditRoleViewModel(IdentityRole role)
+        {
+            this.OriginalRoleName = role.Name;
+            this.RoleName = role.Name;
+            //this.Description = role.Description;
+        }
+    }
+
 }

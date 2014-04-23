@@ -27,7 +27,7 @@ namespace commenergy.Models.appContextMigrations
         {
             bool success = false;
   
-            var idManager = new ApplicationDbContext.IdentityManager();
+            var idManager = new IdentityManager();
             success = idManager.CreateRole("Admin");
             if (!success == true) return success;
   

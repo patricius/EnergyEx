@@ -163,6 +163,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntiForgeryAttribute.cs" />
     <Compile Include="appContextMigrations\201403140630367_l.cs" />
     <Compile Include="appContextMigrations\201403140630367_l.Designer.cs">
       <DependentUpon>201403140630367_l.cs</DependentUpon>
@@ -198,6 +199,7 @@
     <Compile Include="Models\commenergyContext.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentRepository.cs" />
+    <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\PagedResult.cs" />
     <Compile Include="Models\Rating.cs" />

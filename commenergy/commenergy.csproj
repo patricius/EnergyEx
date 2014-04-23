@@ -245,6 +245,7 @@
     <Compile Include="App_Start\OAuthProviders.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.CS" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Migrations\201403071155295_abstract.cs" />
     <Compile Include="Migrations\201403071155295_abstract.Designer.cs">
       <DependentUpon>201403071155295_abstract.cs</DependentUpon>
@@ -333,6 +334,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\commenergy.Models.commenergyContext.mdf" />
+    <Content Include="Content\amelia.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\carousel.css" />
@@ -406,6 +408,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\yeti.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -702,11 +705,11 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
-    <Content Include="Scripts\ViewModels\admin.js" />
     <Content Include="Scripts\ViewModels\Create.js" />
     <Content Include="Scripts\ViewModels\display.js" />
     <Content Include="Scripts\ViewModels\Index.js" />
     <Content Include="Scripts\ViewModels\Rating.js" />
+    <Content Include="Scripts\ViewModels\uadmin.js" />
     <Content Include="Scripts\ViewModels\user.js" />
     <Content Include="Scripts\wysiwyg.js" />
     <Content Include="Web.config">
@@ -778,6 +781,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Account\UserAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\commenergy.Models\commenergy.Layer.csproj">
@@ -798,6 +802,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

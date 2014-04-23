@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "UserAdmin";
+}
+
+<h2>UserAdmin</h2>
+
+
+<div id="body">
+
+
+<table class="table table-hover" id="Users" >
+    <thead>
+        <tr>
+            <th>UserName</th>
+            <th> Name </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: User">
+        <tr>
+            <td data-bind="text: UserName"></td>
+            <td data-bind="text: FirstName"></td>
+           
+
+            <td>
+                <button data-bind="click: $root.edit">Edit</button>
+                <button data-bind="click: $root.delete">Delete</button>
+
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>
+<br />
+<div style="border-top: solid 2px  #282828; width: 430px; height: 10px">&nbsp;</div>
+
+@*<div data-bind="if: Article">
+    <div>
+        <h2>Update Article</h2>
+    </div>
+    <div>
+        <label for="ArticleId" data-bind="visible: true">ID</label>
+        <label data-bind="text: Article().Id, visible: true"></label>
+
+    </div>
+    <div>
+        <label for="name">Title</label>
+        <input data-bind="value: Article().Title" type="text" title="Name" />
+    </div>
+
+    <div>
+        <label for="MetaDescription">MetaDescription</label>
+        <input data-bind="value: Article().MetaDescription" type="text" title="Category" />
+    </div>
+
+    <div>
+        <label for="Key">Key</label>
+        <input data-bind="value: Article().Key" type="text" title="Key" />
+
+    </div>
+    <br />
+    <div>
+        <button data-bind="click: $root.update">Update</button>
+        <button data-bind="click: $root.cancel">Cancel</button>
+
+    </div>
+</div>*@
+
+@*<div data-bind="ifnot: Article()">
+    <div>
+        <h2>Add New Article</h2>
+    </div>
+    <div>
+        <label for="Title">Title</label>
+        <input data-bind="value: $root.Title" type="text" title="Title" />
+    </div>
+
+    <div>
+        <label for="category">Category</label>
+        <input data-bind="value: $root.MetaDescription" type="text" title="MetaDescription" />
+    </div>
+
+    <div>
+        <label for="price">Price</label>
+        <input data-bind="value: $root.Key" type="text" title="Key" />
+    </div>
+    <br />
+    <div>
+        <button data-bind="click: $root.create">Save</button>
+        <button data-bind="click: $root.reset">Reset</button>
+
+    </div>
+</div>*@
+
+</div> 
+
+@section Scripts {
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+
+    <script src="~/Scripts/ViewModels/uadmin.js"></script>
+}

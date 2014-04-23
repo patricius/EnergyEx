@@ -1,4 +1,4 @@
-﻿@model commenergy.models.models.LoginViewModel
+﻿@model commenergy.Models.AccountModels.LoginViewModel
 
 @{
     ViewBag.Title = "Log in";
@@ -50,7 +50,7 @@
     <div class="col-md-4">
         <section class="social" id="socialLoginForm">
             <h2>Use another service to log in.</h2>
-           @Html.Partial("_ExternalLoginsListPartial", new commenergy.models.models.ExternalLoginViewModel() { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+           @Html.Partial("_ExternalLoginsListPartial", new commenergy.Models.AccountModels.ExternalLoginViewModel() { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
 
     </div>

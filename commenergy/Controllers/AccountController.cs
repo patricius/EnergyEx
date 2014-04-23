@@ -15,7 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.Owin.Security;
-using commenergy.models.models;
+using commenergy.Models.AccountModels;
 
 using Microsoft.Owin.Host.SystemWeb;
 using Microsoft.AspNet.Identity.Owin;
@@ -23,7 +23,7 @@ using Microsoft.AspNet.Identity.Owin;
 namespace commenergy.Controllers
 {
 
-    
+        [ValidateAntiForgeryTokenOnAllPosts]
   public class AccountController : Controller
     {
         public AccountController()
@@ -420,5 +420,125 @@ namespace commenergy.Controllers
             }
         }
         #endregion
+      
+        [Authorize(Roles = "Admin")]
+        public ViewResult UserAdmin()
+        {
+            var Db = new ApplicationDbContext();
+            var users = Db.Users;
+            var model = new List<EditUserViewModel>();
+            foreach (var user in users)
+            {
+                var u = new EditUserViewModel(user);
+                model.Add(u);
+            }
+            return View(model);
+        }
+
+        public JsonResult UserIndex()
+        {
+            var Db = new ApplicationDbContext();
+            var users = Db.Users;
+            var model = new List<EditUserViewModel>();
+            foreach (var user in users)
+            {
+                var u = new EditUserViewModel(user);
+                model.Add(u);
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(string id, ManageMessageId? Message = null)
+        {
+            var Db = new ApplicationDbContext();
+            var user = Db.Users.First(u => u.UserName == id);
+            var model = new EditUserViewModel(user);
+            ViewBag.MessageId = Message;
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(EditUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var Db = new ApplicationDbContext();
+                var user = Db.Users.First(u => u.UserName == model.UserName);
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = model.Email;
+                Db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                await Db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+    
+     
+        //[HttpPost]
+        //public ActionResult Delete(string id)
+        //{
+        //    var Db = new ApplicationDbContext();
+        //    var user = Db.Users.First(u => u.UserName == id);
+        //    var model = new EditUserViewModel(user);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(model);
+        //}
+
+        
+        [HttpPost] 
+        public JsonResult DeleteConfirmed(string UserName)
+        {
+            var Db = new ApplicationDbContext();
+            var user = Db.Users.FirstOrDefault(u => u.UserName == UserName);
+            Db.Users.Remove(user);
+            Db.SaveChanges();
+            return Json("Index");
+        }
+
+
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult UserRoles(string id)
+        {
+            var Db = new ApplicationDbContext();
+            var user = Db.Users.First(u => u.UserName == id);
+            var model = new SelectUserRolesViewModel(user);
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserRoles(SelectUserRolesViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var idManager = new IdentityManager();
+                var Db = new ApplicationDbContext();
+                var user = Db.Users.First(u => u.UserName == model.UserName);
+                idManager.ClearUserRoles(user.Id);
+                foreach (var role in model.Roles)
+                {
+                    if (role.Selected)
+                    {
+                        idManager.AddUserToRole(user.Id, role.RoleName);
+                    }
+                }
+                return RedirectToAction("index");
+            }
+            return View();
+        }
     }
 }
+    
