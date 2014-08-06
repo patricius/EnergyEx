@@ -56,7 +56,7 @@ namespace commenergy.Models.Models
             currentRoles.AddRange(user.Roles);
             foreach (var role in currentRoles)
             {
-                _userManager.RemoveFromRole(userId, role.Role.Name);
+                _userManager.RemoveFromRole(userId, role.RoleId);
             }
         }
 

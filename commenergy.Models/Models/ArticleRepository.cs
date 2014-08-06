@@ -87,7 +87,9 @@ namespace commenergy.Models
 
         public Article FindByAuthor (string author)
         {
-            return context.Articles.First(i=>i.Author == author);
+        
+            
+            return context.Articles.FirstOrDefault(i=>i.Author == author);
         }
        public Article Find(string key)
         {
@@ -98,7 +100,7 @@ namespace commenergy.Models
         public PagedResult<Article> GetsArticles(int page, int pageSize)
         {
             context.Configuration.ProxyCreationEnabled = false;
-            var results = context.Articles.OrderByDescending(o => o.CreatedOn).Include(i => i.Comments);
+        var results = context.Articles.OrderByDescending(o => o.CreatedOn).Include(i => i.Comments);
 
             var result = GetPagedResultForQuery(results, page, pageSize);
 
@@ -119,7 +121,8 @@ namespace commenergy.Models
             }
             catch (ArgumentException e)
             {
-                throw e;
+                System.ArgumentException argEx = new System.ArgumentException("Index is out of range", "index", e);
+                throw argEx;
 
             }
 

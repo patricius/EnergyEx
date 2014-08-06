@@ -23,8 +23,8 @@ using Microsoft.AspNet.Identity.Owin;
 namespace commenergy.Controllers
 {
 
-        [ValidateAntiForgeryTokenOnAllPosts]
-  public class AccountController : Controller
+    [ValidateAntiForgeryTokenOnAllPosts]
+    public class AccountController : Controller
     {
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
@@ -43,6 +43,7 @@ namespace commenergy.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            AddUserAndRoles();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -89,8 +90,13 @@ namespace commenergy.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser()
+          {
+              UserName = model.UserName,
+              FirstName = model.FirstName,
+              LastName = model.LastName,
+              Email = model.Email
+          }; var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
@@ -190,6 +196,16 @@ namespace commenergy.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
+        public ActionResult ExternalLogin()
+        {
+            // Request a redirect to the external login provider
+            return View();
+        }
+
+
+
 
         //
         // POST: /Account/ExternalLogin
@@ -394,7 +410,8 @@ namespace commenergy.Controllers
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
             }
 
@@ -420,10 +437,54 @@ namespace commenergy.Controllers
             }
         }
         #endregion
-      
-        [Authorize(Roles = "Admin")]
+
+
+        bool AddUserAndRoles()
+        {
+            bool success = false;
+
+            var idManager = new IdentityManager();
+            success = idManager.CreateRole("Admin");
+            if (!success == true) return success;
+
+            success = idManager.CreateRole("CanEdit");
+            if (!success == true) return success;
+
+            success = idManager.CreateRole("User");
+            if (!success) return success;
+
+
+            var newUser = new ApplicationUser()
+            {
+                UserName = "Inst",
+                FirstName = "Onst",
+                LastName = "Wang",
+                Email = "poobear@dogs.com"
+            };
+
+            // Be careful here - you  will need to use a password which will 
+            // be valid under the password rules for the application, 
+            // or the process will abort:
+            success = idManager.CreateUser(newUser, "Password8");
+            if (!success) return success;
+
+            success = idManager.AddUserToRole(newUser.Id, "Admin");
+            if (!success) return success;
+
+            success = idManager.AddUserToRole(newUser.Id, "CanEdit");
+            if (!success) return success;
+
+            success = idManager.AddUserToRole(newUser.Id, "User");
+            if (!success) return success;
+
+            return success;
+        }
+
+
+  [Authorize(Roles="Admin")]
         public ViewResult UserAdmin()
         {
+
             var Db = new ApplicationDbContext();
             var users = Db.Users;
             var model = new List<EditUserViewModel>();
@@ -437,6 +498,8 @@ namespace commenergy.Controllers
 
         public JsonResult UserIndex()
         {
+
+
             var Db = new ApplicationDbContext();
             var users = Db.Users;
             var model = new List<EditUserViewModel>();
@@ -446,8 +509,12 @@ namespace commenergy.Controllers
                 model.Add(u);
             }
             return Json(model, JsonRequestBehavior.AllowGet);
+
+
         }
-        [Authorize(Roles = "Admin")]
+
+
+      [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id, ManageMessageId? Message = null)
         {
             var Db = new ApplicationDbContext();
@@ -459,7 +526,6 @@ namespace commenergy.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(EditUserViewModel model)
         {
@@ -479,8 +545,8 @@ namespace commenergy.Controllers
             return View(model);
         }
 
-    
-     
+
+
         //[HttpPost]
         //public ActionResult Delete(string id)
         //{
@@ -494,8 +560,8 @@ namespace commenergy.Controllers
         //    return View(model);
         //}
 
-        
-        [HttpPost] 
+
+        [HttpPost]
         public JsonResult DeleteConfirmed(string UserName)
         {
             var Db = new ApplicationDbContext();
@@ -507,22 +573,24 @@ namespace commenergy.Controllers
 
 
 
-        [Authorize(Roles = "Admin")]
-        public ActionResult UserRoles(string id)
+
+        [HttpPost]
+
+        public JsonResult UserRoles(string UserName)
         {
             var Db = new ApplicationDbContext();
-            var user = Db.Users.First(u => u.UserName == id);
+            var user = Db.Users.First(u => u.UserName == UserName);
             var model = new SelectUserRolesViewModel(user);
-            return View(model);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
 
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
-        public ActionResult UserRoles(SelectUserRolesViewModel model)
+
+
+        public JsonResult UserRoleEdit(SelectUserRolesViewModel model)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
             {
                 var idManager = new IdentityManager();
                 var Db = new ApplicationDbContext();
@@ -533,12 +601,18 @@ namespace commenergy.Controllers
                     if (role.Selected)
                     {
                         idManager.AddUserToRole(user.Id, role.RoleName);
+                        Db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                        Db.SaveChangesAsync();
                     }
+                    return Json(model, JsonRequestBehavior.AllowGet);
                 }
-                return RedirectToAction("index");
             }
-            return View();
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
+        
     }
+   
 }
-    
+
+            
+

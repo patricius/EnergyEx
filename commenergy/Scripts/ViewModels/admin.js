@@ -2,7 +2,6 @@
  
     //Make the self as 'this' reference 
     var self = this; 
-    //Declare observable which will be bind with UI  
     self.Id = ko.observable(""); 
     self.Title = ko.observable(""); 
     self.Body = ko.observable(""); 
@@ -16,7 +15,7 @@
     }; 
  
     self.Article = ko.observable(); 
-    self.Results = ko.observableArray([]);   // Contains the list of products 
+    self.Results = ko.observableArray([]);  
  
     // Initialize the view-model 
     $.ajax({ 

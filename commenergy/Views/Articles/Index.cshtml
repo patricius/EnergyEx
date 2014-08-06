@@ -60,26 +60,33 @@
     }
     
 }*@
- <div class="row" data-bind ="foreach: Results">
-          <div class="col-md-4">
-              <div style="width: auto; height: auto; padding: 22px 10px 0px 0px;">        
-                  <h2 data-bind ="text: Title"></h2>
-                  <p  data-bind="text: Abstract"></p>
-                  <a data-bind="attr: {href: URLTo, title: name}" role="button"> View details </a>
-</div>   
-           
-              @*//<a href data-bind ="text: URLto"></a>*@
-           
-          </div>
 
-     
-     </div> 
-  <h2 data-bind ="value: CurrentPage"> </h2>
-<a data-bind="click: loadNext" role="button"> Next Page </a>   <a data-bind="click: loadPrevious" role="button"> Previous Page </a>
+<div class="well">These are the latest energy drink reviews from our staff. </div>
+
+    <div class="row" data-bind="foreach: Results">
+    <div class="col-md-4">
+        @*<div style="width: auto; height: auto; padding: 22px 10px 0px 0px;">*@
+        <div class="panel panel-primary">
+            <div class="panel-heading" data-bind="text: Title"></div>
+            <div class="panel-body" data-bind="text: Abstract"> </div>
+    <a data-bind="attr: {href: URLTo, title: name}" role="button"> View details </a>
+</div>
+    </div>
+    @*//<a href data-bind ="text: URLto"></a>*@
+
+</div>
 
 
-@section Scripts {
 
-    <script src="~/Scripts/knockout-3.0.0.js"></script>
+<footer>
+    <h2 data-bind="value: CurrentPage"> </h2>
+    <ul class="pager">
+    <li> <button type="button" class="btn btn-success" data-bind="click: loadNext"> Next Page </button></li>  
+   <li><button type="button" class="btn-success" data-bind="click: loadPrevious" role="button"> Previous Page </button></li>
+</ul>
+    </footer>
+    @section Scripts {
+
+        <script src="~/Scripts/knockout-3.0.0.js"></script>
         <script src="~/Scripts/IndexVM.js"></script>
-}
+    }

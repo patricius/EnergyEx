@@ -107,7 +107,7 @@ namespace commenergy.Models.AccountModels
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 Email = this.Email,
-                Password = this.Password
+               Password = this.Password
             };
             return user;
         }
@@ -122,8 +122,8 @@ namespace commenergy.Models.AccountModels
         public EditUserViewModel(ApplicationUser user)
         {
             this.UserName = user.UserName;
-            this.FirstName = user.FirstName;
-            this.LastName = user.LastName;
+            //thissssssssssssxxzxxxcsddccccccccccccccccccccccccccccccccss.FirstName = user.FirstName;
+            //this.LastName = user.LastName;,,,,,,,,,,,,,,,,,
             this.Email = user.Email;
         }
 
@@ -142,6 +142,7 @@ namespace commenergy.Models.AccountModels
         [Required]
         public string Email { get; set; }
     }
+
 
 
     public class SelectUserRolesViewModel
@@ -164,8 +165,9 @@ namespace commenergy.Models.AccountModels
 
             // Add all available roles to the list of EditorViewModels:
             var allRoles = Db.Roles;
-            foreach (var role in allRoles)
+             foreach(var role in allRoles)
             {
+                 
                 // An EditorViewModel will be used by Editor Template:
                 var rvm = new SelectRoleEditorViewModel(role);
                 this.Roles.Add(rvm);
@@ -173,10 +175,10 @@ namespace commenergy.Models.AccountModels
 
             // Set the Selected property to true for those roles for 
             // which the current user is a member:
-            foreach (var userRole in user.Roles)
+            foreach (var userRole in Db.Roles)
             {
                 var checkUserRole =
-                    this.Roles.Find(r => r.RoleName == userRole.Role.Name);
+                    Roles.Find(r => r.RoleId == userRole.Id);
                 checkUserRole.Selected = true;
             }
         }
@@ -187,20 +189,7 @@ namespace commenergy.Models.AccountModels
         public List<SelectRoleEditorViewModel> Roles { get; set; }
     }
 
-    // Used to display a single role with a checkbox, within a list structure:
-    public class SelectRoleEditorViewModel
-    {
-        public SelectRoleEditorViewModel() { }
-        public SelectRoleEditorViewModel(IdentityRole role)
-        {
-            this.RoleName = role.Name;
-        }
-
-        public bool Selected { get; set; }
-
-        [Required]
-        public string RoleName { get; set; }
-    }
+   
 
 
     public class RoleViewModel
@@ -216,7 +205,22 @@ namespace commenergy.Models.AccountModels
         }
     }
 
+    public class SelectRoleEditorViewModel
+    {
+        public SelectRoleEditorViewModel() { }
+        public SelectRoleEditorViewModel(IdentityRole role)
+        {
+            this.RoleName = role.Name;
+            this.RoleId = role.Id;
+        }
 
+        public bool Selected { get; set; }
+
+        [Required]
+        public string RoleName { get; set; }
+
+        public string RoleId { get; set; }
+    }
     public class EditRoleViewModel
     {
         public string OriginalRoleName { get; set; }

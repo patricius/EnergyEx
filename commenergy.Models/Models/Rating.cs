@@ -14,6 +14,8 @@ namespace commenergy.Models.Models
         
         public int ArticleId { get; set; }
 
+        //public int EnergyDrinkId { get; set; }
+
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
         public string UserId { get; set; }
@@ -24,5 +26,6 @@ namespace commenergy.Models.Models
         [Required]
         public float Rating { get; set; }        
     }
+
     }
 

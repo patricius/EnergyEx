@@ -58,16 +58,19 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
       <HintPath>..\packages\Microsoft.Data.Edm.5.6.1\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -191,6 +194,46 @@
     <Compile Include="appContextMigrations\201403281444019_admin.cs" />
     <Compile Include="appContextMigrations\201403281444019_admin.Designer.cs">
       <DependentUpon>201403281444019_admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405020012272_update.cs" />
+    <Compile Include="appContextMigrations\201405020012272_update.Designer.cs">
+      <DependentUpon>201405020012272_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405020119291_s1.cs" />
+    <Compile Include="appContextMigrations\201405020119291_s1.Designer.cs">
+      <DependentUpon>201405020119291_s1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405020321539_identityfixattempt3.cs" />
+    <Compile Include="appContextMigrations\201405020321539_identityfixattempt3.Designer.cs">
+      <DependentUpon>201405020321539_identityfixattempt3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405020326251_ds.cs" />
+    <Compile Include="appContextMigrations\201405020326251_ds.Designer.cs">
+      <DependentUpon>201405020326251_ds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405020342285_etc.cs" />
+    <Compile Include="appContextMigrations\201405020342285_etc.Designer.cs">
+      <DependentUpon>201405020342285_etc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405022103229_fixa.cs" />
+    <Compile Include="appContextMigrations\201405022103229_fixa.Designer.cs">
+      <DependentUpon>201405022103229_fixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405022307034_sc.cs" />
+    <Compile Include="appContextMigrations\201405022307034_sc.Designer.cs">
+      <DependentUpon>201405022307034_sc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405022356229_bm.cs" />
+    <Compile Include="appContextMigrations\201405022356229_bm.Designer.cs">
+      <DependentUpon>201405022356229_bm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405030119084_smcccd.cs" />
+    <Compile Include="appContextMigrations\201405030119084_smcccd.Designer.cs">
+      <DependentUpon>201405030119084_smcccd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="appContextMigrations\201405030125096_cssdcc.cs" />
+    <Compile Include="appContextMigrations\201405030125096_cssdcc.Designer.cs">
+      <DependentUpon>201405030125096_cssdcc.cs</DependentUpon>
     </Compile>
     <Compile Include="appContextMigrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -365,6 +408,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="appContextMigrations\201403281444019_admin.resx">
       <DependentUpon>201403281444019_admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405020012272_update.resx">
+      <DependentUpon>201405020012272_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405020119291_s1.resx">
+      <DependentUpon>201405020119291_s1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405020321539_identityfixattempt3.resx">
+      <DependentUpon>201405020321539_identityfixattempt3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405020326251_ds.resx">
+      <DependentUpon>201405020326251_ds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405020342285_etc.resx">
+      <DependentUpon>201405020342285_etc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405022103229_fixa.resx">
+      <DependentUpon>201405022103229_fixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405022307034_sc.resx">
+      <DependentUpon>201405022307034_sc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405022356229_bm.resx">
+      <DependentUpon>201405022356229_bm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405030119084_smcccd.resx">
+      <DependentUpon>201405030119084_smcccd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="appContextMigrations\201405030125096_cssdcc.resx">
+      <DependentUpon>201405030125096_cssdcc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

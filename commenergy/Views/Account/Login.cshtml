@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-2 col-md-3">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
                             @Html.LabelFor(m => m.RememberMe)
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-offset-2 col-md-3">
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
@@ -47,7 +47,7 @@
             }
         </section>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <section class="social" id="socialLoginForm">
             <h2>Use another service to log in.</h2>
            @Html.Partial("_ExternalLoginsListPartial", new commenergy.Models.AccountModels.ExternalLoginViewModel() { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })

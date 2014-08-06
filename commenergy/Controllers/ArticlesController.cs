@@ -70,6 +70,7 @@ public class ArticlesController : Controller
         return Json(_articleRepository.GetsArticles(newPage, PageSize), JsonRequestBehavior.AllowGet);
     }
 
+   
 
       [System.Web.Http.HttpPost]
       public JsonResult ArticleNavPrev(int CurrentPage)
@@ -209,20 +210,24 @@ public class ArticlesController : Controller
     public JsonResult Edit(Article article)
     {
 
+        if (ModelState.IsValid)
+        {
+            var currentArticle = _articleRepository.Find(article.Id);
 
-        var currentArticle = _articleRepository.Find(article.Id);
+            currentArticle.Key = Utilities.WebSafeMaker(article.Key);
 
-        currentArticle.Key = Utilities.WebSafeMaker(article.Key);
+            currentArticle.UpdatedOn = DateTime.UtcNow;
 
-        currentArticle.UpdatedOn = DateTime.UtcNow;
+            currentArticle.Body = article.Body;
+            currentArticle.Title = article.Title.Trim();
+            currentArticle.MetaDescription = article.MetaDescription;
 
-        currentArticle.Body = article.Body;
-        currentArticle.Title = article.Title.Trim();
-        currentArticle.MetaDescription = article.MetaDescription;
+            _articleRepository.InsertOrUpdate(currentArticle);
 
-        _articleRepository.InsertOrUpdate(currentArticle);
+            _articleRepository.Save();
 
-        _articleRepository.Save();
+
+        }
         return Json(article, JsonRequestBehavior.AllowGet);
     }
 
@@ -331,9 +336,7 @@ public class ArticlesController : Controller
         // Example of gathering information from each file
         int fileSize = file.ContentLength;
         string fileName = file.FileName;
-        string mimeType = file.ContentType;
- 
-        // Open input stream
+        string mimeType = file.ContentType;        // Open input stream
         System.IO.Stream fileContent = file.InputStream;
         file.SaveAs(Server.MapPath("~/Content/") + fileName); //File will be saved in application root
        

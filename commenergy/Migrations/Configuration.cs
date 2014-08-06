@@ -30,7 +30,7 @@ using commenergy.Models.Models;
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
+            context.Configuration.LazyLoadingEnabled = true;
             }
         }
     }

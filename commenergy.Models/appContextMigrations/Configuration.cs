@@ -19,6 +19,7 @@ namespace commenergy.Models.appContextMigrations
  
         protected override void Seed(ApplicationDbContext context)
         {
+            context.Configuration.LazyLoadingEnabled = true;
             this.AddUserAndRoles();
         }
   
@@ -40,10 +41,10 @@ namespace commenergy.Models.appContextMigrations
   
             var newUser = new ApplicationUser()
             {
-                UserName = "dogbert",
-                FirstName = "dog",
-                LastName = "bert",
-                Email = "theundeadbat@aim.com"
+                UserName = "onst",
+                FirstName = "Onst",
+                LastName = "Wang",
+                Email = "poobear@dogs.com"
             };
   
             // Be careful here - you  will need to use a password which will 

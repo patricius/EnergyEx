@@ -34,7 +34,6 @@ C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\System.Web.Http
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\EntityFramework.xml
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\Newtonsoft.Json.xml
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\System.Web.Http.Common.xml
-C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Layer.csprojResolveAssemblyReference.cache
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.dll
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.pdb
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\bin\Debug\commenergy.Models.dll.config
@@ -135,3 +134,14 @@ C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Mode
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.appdbmodelupdate.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.e.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.admin.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.update.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.s1.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.identityfixattempt3.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.ds.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.etc.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.fixa.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.sc.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.bm.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.smcccd.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Models.appContextMigrations.cssdcc.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy.Models\obj\Debug\commenergy.Layer.csprojResolveAssemblyReference.cache

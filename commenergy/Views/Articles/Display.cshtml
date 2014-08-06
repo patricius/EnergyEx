@@ -1,16 +1,16 @@
 ﻿@model commenergy.Models.Article
 
 @{
-    ViewBag.Title = "Article";
+    ////ViewBag.Title = "Article";
 }
 
 @Styles.Render("~/Content/rateit.css")
 
 <div id="d"> 
-    <div class="container" data-bind="foreach: Article">
-        <img data-bind="attr:{ src: '/Content/' + ImagePath }" />
+    <div class="c" data-bind="foreach: Article">
+        <img id="m" data-bind="attr:{ src: '/Content/' + ImagePath }" />
             <h2 data-bind="text: Title"></h2>
-            <p data-bind="html: Body"></p>
+            <article data-bind="html: Body" ></article>
         <div data-bind="rateit: { value: AvgRating, max: 10, step: 0.1, readonly: true }"></div>
         </div>
         </div>
@@ -22,7 +22,7 @@
 
 <h2><b>Comment On</b></h2>
 
-<div id="Rating">
+<div id="Rating" role="navigation">
     <div data-bind="rateit: { value: Rating, max: 10, step: 0.1, readonly: false}, event: { mousedown: rateity}">
     </div>
     </div>
