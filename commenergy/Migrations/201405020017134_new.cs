@@ -8,22 +8,22 @@ namespace commenergy.Migrations
         public override void Up()
         {
             
-            AddColumn("dbo.AspNetUsers", "EmailConfirmed", c => c.Boolean(nullable: false));
-            AddColumn("dbo.AspNetUsers", "PhoneNumber", c => c.String());
-            AddColumn("dbo.AspNetUsers", "PhoneNumberConfirmed", c => c.Boolean(nullable: false));
-            AddColumn("dbo.AspNetUsers", "TwoFactorEnabled", c => c.Boolean(nullable: false));
-            AddColumn("dbo.AspNetUsers", "LockoutEndDateUtc", c => c.DateTime());
-            AddColumn("dbo.AspNetUsers", "LockoutEnabled", c => c.Boolean(nullable: false));
-            AddColumn("dbo.AspNetUsers", "AccessFailedCount", c => c.Int(nullable: false));
-            AddColumn("dbo.AspNetUserClaims", "UserId", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "EmailConfirmed", c => c.Boolean(nullable: false));
+            //AddColumn("dbo.AspNetUsers", "PhoneNumber", c => c.String());
+            //AddColumn("dbo.AspNetUsers", "PhoneNumberConfirmed", c => c.Boolean(nullable: false));
+            //AddColumn("dbo.AspNetUsers", "TwoFactorEnabled", c => c.Boolean(nullable: false));
+            //AddColumn("dbo.AspNetUsers", "LockoutEndDateUtc", c => c.DateTime());
+            //AddColumn("dbo.AspNetUsers", "LockoutEnabled", c => c.Boolean(nullable: false));
+            //AddColumn("dbo.AspNetUsers", "AccessFailedCount", c => c.Int(nullable: false));
+            //AddColumn("dbo.AspNetUserClaims", "UserId", c => c.String());
            
-            AlterColumn("dbo.AspNetUserLogins", "UserId", c => c.String());
-            CreateIndex("dbo.AspNetUserLogins", "IdentityUser_Id");
-            CreateIndex("dbo.AspNetUserRoles", "IdentityUser_Id");
-            CreateIndex("dbo.AspNetUserRoles", "IdentityRole_Id");
-            AddForeignKey("dbo.AspNetUserLogins", "IdentityUser_Id", "dbo.AspNetUsers", "Id");
-            AddForeignKey("dbo.AspNetUserRoles", "IdentityUser_Id", "dbo.AspNetUsers", "Id");
-            AddForeignKey("dbo.AspNetUserRoles", "IdentityRole_Id", "dbo.AspNetRoles", "Id");
+            //AlterColumn("dbo.AspNetUserLogins", "UserId", c => c.String());
+            //CreateIndex("dbo.AspNetUserLogins", "IdentityUser_Id");
+            //CreateIndex("dbo.AspNetUserRoles", "IdentityUser_Id");
+            //CreateIndex("dbo.AspNetUserRoles", "IdentityRole_Id");
+            //AddForeignKey("dbo.AspNetUserLogins", "IdentityUser_Id", "dbo.AspNetUsers", "Id");
+            //AddForeignKey("dbo.AspNetUserRoles", "IdentityUser_Id", "dbo.AspNetUsers", "Id");
+            //AddForeignKey("dbo.AspNetUserRoles", "IdentityRole_Id", "dbo.AspNetRoles", "Id");
         }
         
         public override void Down()

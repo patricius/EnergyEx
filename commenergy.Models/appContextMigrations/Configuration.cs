@@ -15,11 +15,13 @@ namespace commenergy.Models.appContextMigrations
         {
             AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"appContextMigrations";
+   
         }
  
         protected override void Seed(ApplicationDbContext context)
         {
             context.Configuration.LazyLoadingEnabled = true;
+            context.Configuration.ProxyCreationEnabled = false;
             this.AddUserAndRoles();
         }
   

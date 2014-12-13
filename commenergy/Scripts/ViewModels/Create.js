@@ -25,7 +25,7 @@ function ArticleViewModel() {
             Title: this.Title(),
             Body: this.Body(),
             MetaDescription: this.MetaDescription(),
-            ImagePath: Article.ImagePath(),
+            ImagePath: $('input[type=file]').val().replace(/C:\\fakepath\\/i, ''),
             File: this.file()
         });
 
@@ -74,7 +74,8 @@ window.onload = function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 alert(xhr.response);
-                Article.ImagePath = ko.observable(xhr.responseText.substring(1, xhr.responseText.length - 1));
+                //Article.ImagePath = ko.observable(xhr.responseText.substring(1, xhr.responseText.length - 1));
+                
             }
         }
         return false;

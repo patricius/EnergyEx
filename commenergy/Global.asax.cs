@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using commenergy.App_Start;
+using System.Web.Helpers;
 
 namespace commenergy
 {
@@ -18,6 +19,7 @@ namespace commenergy
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
 
       
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

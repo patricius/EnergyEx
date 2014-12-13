@@ -13,7 +13,6 @@ namespace commenergy.Migrations
             AlterColumn("dbo.Comments", "ArticleId", c => c.Int(nullable: false));
             CreateIndex("dbo.Articles", "UserId");
             CreateIndex("dbo.Comments", "ArticleId");
-            AddForeignKey("dbo.Articles", "UserId", "dbo.Users", "Id", cascadeDelete: true);
             AddForeignKey("dbo.Comments", "ArticleId", "dbo.Articles", "Id", cascadeDelete: true);
        
         }

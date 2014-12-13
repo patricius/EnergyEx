@@ -12,6 +12,7 @@ namespace commenergy.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        Abstract = c.String(nullable: true, maxLength: 100 ),
                         Key = c.String(nullable: false, maxLength: 75),
                         CreatedOn = c.DateTime(nullable: false),
                         UpdatedOn = c.DateTime(),

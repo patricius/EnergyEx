@@ -12,13 +12,12 @@ namespace commenergy.Models
 {
     public class Article
     {
-
-
         [Display(Name = "User Name")]
         [DisplayFormat(NullDisplayText = "anonymous")]
         public string Author { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-       [DatabaseGenerated(DatabaseGeneratedOption.None)]
+       
        
         public string UserId { get; set; }
        [ForeignKey("UserId")]

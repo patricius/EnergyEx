@@ -255,17 +255,17 @@ public class ArticlesController : Controller
     public ViewResult UserDashboard()
     {
         string username = User.Identity.Name;
-        var UserArticles = _articleRepository.FindByAuthor(username);
-        return View(UserArticles);
+       
+        return View();
     }
 
     public JsonResult UserInfo()
     {
 
         string username = User.Identity.Name;
-        var UserArticles = _articleRepository.FindByAuthor(username);
+    
         var UserArticles4 = _articleRepository.FindByAuthor(username);
-        return Json(UserArticles, JsonRequestBehavior.AllowGet);
+        return Json(UserArticles4, JsonRequestBehavior.AllowGet);
 
     }
 
@@ -327,9 +327,9 @@ public class ArticlesController : Controller
 
 
         [System.Web.Http.HttpPost]
-        public JsonResult Upload()
+ public JsonResult Upload()
         {
-          for (int i = 0; i < Request.Files.Count; i++) {
+        for (int i = 0; i < Request.Files.Count; i++) {
         // for each file being sent over...
         HttpPostedFileBase file = Request.Files[i];
  
@@ -338,12 +338,11 @@ public class ArticlesController : Controller
         string fileName = file.FileName;
         string mimeType = file.ContentType;        // Open input stream
         System.IO.Stream fileContent = file.InputStream;
-        file.SaveAs(Server.MapPath("~/Content/") + fileName); //File will be saved in application root
+        file.SaveAs("/Content/" + fileName); //File will be saved in application root
        
         }
     // Return JSON
-          
-
+         
     return Json("File Uploaded!");
 
 }

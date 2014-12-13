@@ -1,0 +1,101 @@
+﻿@using System.Web.UI.WebControls
+@using WebGrease.Css.Ast
+
+ @Styles.Render("~/Content/bootstrap-theme.min.css")
+@Styles.Render("~/Content/bootstrap.css")
+@*@Styles.Render("~/Content/JUMBOTRON.css")*@
+
+        <meta charset="utf-8">
+        <title>@ViewBag.Title</title>
+        @RenderSection("meta", required: false)
+        @RenderSection("Featured", required: false)
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <div class="navbar-left">
+              <div class="nav navbar-collapse collapse" id="navbar-main">
+                  <ul class="nav navbar-nav">
+                      <li> <a href="Account/UserAdmin">Admin</a></li>
+                      </ul>
+</div>
+              </div>
+              <div class="navbar-collapse collapse" id="navbar-main">
+                  <ul class="nav navbar-nav">
+                      <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"> View your Articles <span class="caret"></span></a>
+                          <ul class="dropdown-menu" aria-labelledby="themes">
+                          
+                              <li class="divider"></li>
+                              
+                              <li><a href="~/Articles/UserDashboard/">UserDashboard</a></li>
+                              <li><a href="~/Articles/Admin"> Admin</a></li>
+                          </ul>
+
+                     
+                          </li>
+                      </ul>
+
+                          <a class="navbar-brand fixed" href="@Url.Action("Index", "Articles")">Energy Drink Exchange</a>
+              </div>
+          </div>
+          
+              <div class="navbar-collapse collapse">
+                  @Html.Partial("_LoginPartial")
+
+
+              </div><!--/.navbar-collapse -->
+          </div>
+  
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="fadein">
+                @*<img src="~/Content/burn_energy_drink.jpg" alt="Energy" />
+                <img src="~/burn" alt="Energy" />
+                <img src="~/Content/MonsterDrinksMain.jpg" alt="Energy" />*@
+
+            </div>
+            <p><a class="btn btn-primary btn-link" role="button" href="Home/About">Learn more </a></p>
+        </div>
+        </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+    
+              @RenderBody()
+       
+
+        </div>
+
+      <footer>
+        
+      </footer>
+     <!-- /container -->
+     
+      
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+       @Scripts.Render("~/scripts/jquery-2.0.3.js") 
+      @Scripts.Render("~/scripts/bootstrap.min.js")
+      @Scripts.Render("~/scripts/knockout-3.0.0.js") 
+       
+   <script type ="text/javascript">
+$(function () {
+    $('.fadein img:gt(0)').hide();
+    setInterval(function () {
+        $('.fadein :first-child').fadeOut()
+           .next('img').fadeIn()
+           .end().appendTo('.fadein');
+    },
+      9000);
+});
+</script>
+        @RenderSection("Scripts", required: false)
+
+              
+
+    
+ 

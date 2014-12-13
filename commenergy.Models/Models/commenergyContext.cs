@@ -2,13 +2,18 @@ using System.Data.Entity;
 using System.Linq;
 using commenergy.Models.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-using commenergy.Models.appContextMigrations;
+using commenergy.Models;
 
 namespace commenergy.Models
 {
-    public class commenergyContext : DbContext
-    {
 
+    public class commenergyContext : IdentityDbContext<ApplicationUser>
+    {
+        public commenergyContext()
+        : base("commenergy.Models.commenergyContext"){
+             this.Configuration.LazyLoadingEnabled = true;
+  this.Configuration.ProxyCreationEnabled = false;
+        }
       
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -21,17 +26,19 @@ namespace commenergy.Models
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             this.Configuration.LazyLoadingEnabled = true;
+     
+
             var user = modelBuilder.Entity<IdentityUser>().HasKey(u => u.Id).ToTable("dbo.AspNetUsers"); //Specify our our own table names instead of the defaults
 
             user.Property(iu => iu.Id).HasColumnName("Id");
             user.Property(iu => iu.UserName).HasColumnName("UserName");
-            
-            
+
+
             user.Property(iu => iu.PasswordHash).HasColumnName("PasswordHash");
             user.Property(iu => iu.SecurityStamp).HasColumnName("SecurityStamp");
 
@@ -43,20 +50,20 @@ namespace commenergy.Models
             var applicationUser = modelBuilder.Entity<ApplicationUser>().HasKey(au => au.Id).ToTable("dbo.AspNetUsers"); //Specify our our own table names instead of the defaults
 
             applicationUser.Property(au => au.Id).HasColumnName("Id");
-           
+
             applicationUser.Property(au => au.UserName).HasMaxLength(50).HasColumnName("UserName");
             applicationUser.Property(au => au.PasswordHash).HasColumnName("PasswordHash");
             applicationUser.Property(au => au.SecurityStamp).HasColumnName("SecurityStamp");
-           
-            applicationUser.Property(au => au.Email).HasColumnName("EmailAddress").HasMaxLength(254).IsRequired();
-       
 
-            var role = modelBuilder.Entity<IdentityRole>().HasKey(ir => ir.Id).ToTable("dbo.AspNetRoles");
+            applicationUser.Property(au => au.Email).HasColumnName("EmailAddress").HasMaxLength(254).IsRequired();
+
+
+            var role = modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id).ToTable("dbo.AspNetRoles");
 
             role.Property(ir => ir.Id).HasColumnName("Id");
             role.Property(ir => ir.Name).HasColumnName("Name");
 
-            var claim = modelBuilder.Entity<IdentityUserClaim>().HasKey(iuc => iuc.Id).ToTable("AspNetUserClaims");
+            var claim = modelBuilder.Entity<IdentityUserClaim>().HasKey(iuc => iuc.Id).ToTable("dbo.AspNetUserClaims");
 
             claim.Property(iuc => iuc.Id).HasColumnName("Id");
             claim.Property(iuc => iuc.ClaimType).HasColumnName("ClaimType");
@@ -71,7 +78,7 @@ namespace commenergy.Models
 
             var userRole = modelBuilder.Entity<IdentityUserRole>().HasKey(iur => new { iur.UserId, iur.RoleId }).ToTable(
                 "dbo.AspNetUserRoles");
-          
+
             userRole.Property(ur => ur.UserId).HasColumnName("UserId");
             userRole.Property(ur => ur.RoleId).HasColumnName("RoleId");
            

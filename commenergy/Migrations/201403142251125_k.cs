@@ -7,20 +7,19 @@ namespace commenergy.Migrations
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Comments", "Article_UserId", "dbo.Articles");
-            DropForeignKey("dbo.Articles", "UserId", "dbo.AspNetUsers");
-            DropIndex("dbo.Comments", new[] { "Article_UserId" });
-            DropIndex("dbo.Articles", new[] { "UserId" });
+            //DropForeignKey("dbo.Comments", "Article_UserId", "dbo.Articles");
+            //DropForeignKey("dbo.Articles", "UserId", "dbo.AspNetUsers");
+            //DropIndex("dbo.Comments", new[] { "Article_UserId" });
+            //DropIndex("dbo.Articles", new[] { "UserId" });
           
         
-            AlterColumn("dbo.Articles", "UserId", c => c.String(maxLength: 128));
-            AlterColumn("dbo.Articles", "Id", c => c.Int(nullable: false, identity: true));
-            AlterColumn("dbo.Comments", "ArticleId", c => c.Int(nullable: false));
-            DropPrimaryKey("dbo.Articles");
-            AddPrimaryKey("dbo.Articles", "Id");
+            //AlterColumn("dbo.Articles", "UserId", c => c.String(maxLength: 128));
+            //AlterColumn("dbo.Articles", "Id", c => c.Int(nullable: false, identity: true));
+            //AlterColumn("dbo.Comments", "ArticleId", c => c.Int(nullable: false));
+            //DropPrimaryKey("dbo.Articles");
+            //AddPrimaryKey("dbo.Articles", "Id");
           
-            CreateIndex("dbo.Articles", "UserId");
-            AddForeignKey("dbo.Comments", "ArticleId", "dbo.Articles", "Id", cascadeDelete: true);
+            //CreateIndex("dbo.Articles", "UserId");
             
         }
         

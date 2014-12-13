@@ -27,7 +27,7 @@ namespace commenergy.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new commenergyContext())))
         {
         }
 
@@ -90,6 +90,8 @@ namespace commenergy.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
                 var user = new ApplicationUser()
           {
               UserName = model.UserName,
@@ -481,14 +483,14 @@ namespace commenergy.Controllers
         }
 
 
-  [Authorize(Roles="Admin")]
+  [Authorize(Roles="CanEdit")]
         public ViewResult UserAdmin()
         {
 
-            var Db = new ApplicationDbContext();
-            var users = Db.Users;
+            var Db = new commenergyContext();
+            var Users = Db.Users;
             var model = new List<EditUserViewModel>();
-            foreach (var user in users)
+            foreach (var user in Users)
             {
                 var u = new EditUserViewModel(user);
                 model.Add(u);
@@ -500,10 +502,10 @@ namespace commenergy.Controllers
         {
 
 
-            var Db = new ApplicationDbContext();
-            var users = Db.Users;
+            var Db = new commenergyContext();
+            var Users = Db.Users;
             var model = new List<EditUserViewModel>();
-            foreach (var user in users)
+            foreach (var user in Users)
             {
                 var u = new EditUserViewModel(user);
                 model.Add(u);
@@ -517,21 +519,20 @@ namespace commenergy.Controllers
       [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id, ManageMessageId? Message = null)
         {
-            var Db = new ApplicationDbContext();
+            var Db = new commenergyContext();
             var user = Db.Users.First(u => u.UserName == id);
             var model = new EditUserViewModel(user);
             ViewBag.MessageId = Message;
-            return View(model);
+            return View(model); 
         }
-
-
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(EditUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var Db = new ApplicationDbContext();
+                var Db = new commenergyContext();
                 var user = Db.Users.First(u => u.UserName == model.UserName);
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
@@ -564,7 +565,7 @@ namespace commenergy.Controllers
         [HttpPost]
         public JsonResult DeleteConfirmed(string UserName)
         {
-            var Db = new ApplicationDbContext();
+            var Db = new commenergyContext();
             var user = Db.Users.FirstOrDefault(u => u.UserName == UserName);
             Db.Users.Remove(user);
             Db.SaveChanges();
@@ -578,7 +579,7 @@ namespace commenergy.Controllers
 
         public JsonResult UserRoles(string UserName)
         {
-            var Db = new ApplicationDbContext();
+            var Db = new commenergyContext();
             var user = Db.Users.First(u => u.UserName == UserName);
             var model = new SelectUserRolesViewModel(user);
             return Json(model, JsonRequestBehavior.AllowGet);
@@ -593,7 +594,7 @@ namespace commenergy.Controllers
             //if (ModelState.IsValid)
             {
                 var idManager = new IdentityManager();
-                var Db = new ApplicationDbContext();
+                var Db = new commenergyContext();
                 var user = Db.Users.First(u => u.UserName == model.UserName);
                 idManager.ClearUserRoles(user.Id);
                 foreach (var role in model.Roles)

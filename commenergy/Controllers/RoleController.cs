@@ -8,6 +8,7 @@ using commenergy.Models.AccountModels;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net;
+using commenergy.Models;
 
 namespace commenergy.Controllers
 {
@@ -16,7 +17,7 @@ namespace commenergy.Controllers
         // GET: /Role/
         public class RolesController : Controller
         {
-            private ApplicationDbContext _db = new ApplicationDbContext();
+            private commenergyContext _db = new commenergyContext();
 
             public ActionResult Index()
             {

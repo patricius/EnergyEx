@@ -1,0 +1,150 @@
+﻿@model commenergy.Models.PagedResult<commenergy.Models.Article>
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<div id="body">
+
+   
+    <table class="table table-striped table-hover" id="Articles" data-bind="visible: Results().length > 0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Key</th>
+                <th>MetaDescription</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: Results">
+            <tr>
+                <td data-bind="text: Id"></td>
+                <td data-bind="text: Title"></td>
+                <td data-bind="text: MetaDescription"></td>
+                <td data-bind="text: Key"></td>
+
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm" data-bind="click: $root.edit">Edit</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bind="click: $root.delete">Delete</button>
+
+                </td>
+
+            </tr>
+        </tbody>
+
+    </table>
+        <br />
+        <div style="border-top: solid 2px  #282828; width: 430px; height: 10px">&nbsp;</div>
+
+        <div data-bind="if: Article">
+            <div>
+                <h2>Update Article</h2>
+            </div>
+            <div>
+                <label for="ArticleId" data-bind="visible: true">ID</label>
+                <label data-bind="text: Article().Id, visible: true"></label>
+
+            </div>
+            <div>
+                <label for="name">Title</label>
+                <input data-bind="value: Article().Title" type="text" title="Name" />
+            </div>
+
+            <div>
+                <label for="MetaDescription">MetaDescription</label>
+                <input data-bind="value: Article().MetaDescription" type="text" title="Category" />
+            </div>
+
+            <div>
+                <label for="Key">Key</label>
+                <input data-bind="value: Article().Key" type="text" title="Key" />
+
+            </div>
+            <br />
+            <div>
+                <button data-bind="click: $root.update">Update</button>
+                <button data-bind="click: $root.cancel">Cancel</button>
+
+            </div>
+        </div>
+
+        <div data-bind="ifnot: Article()">
+            <div>
+                <h2>Add New Article</h2>
+            </div>
+            <div>
+                <label for="Title">Title</label>
+                <input data-bind="value: $root.Title" type="text" title="Title" />
+            </div>
+
+            <div>
+                <label for="category">Category</label>
+                <input data-bind="value: $root.MetaDescription" type="text" title="MetaDescription" />
+            </div>
+
+            <div>
+                <label for="price">Price</label>
+                <input data-bind="value: $root.Key" type="text" title="Key" />
+            </div>
+            <br />
+            <div>
+                <button class="btn-primary" data-bind="click: $root.create">Save</button>
+                <button class="btn-primary" data-bind="click: $root.reset">Reset</button>
+
+            </div>
+        </div>
+
+</div> 
+
+@*@foreach (var item in Model.Results) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+                        @String.Format("{0:g}", item.CreatedOn)
+        </td>
+        <td>
+                        @item.Title
+        </td>
+        <td>
+                        @(item.Comments == null ? "None" : item.Comments.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>*@
+
+
+
+ 
+@*@{
+    int pageCount = Model.PageCount;
+
+    for (int pageNumber = 1; pageNumber <= pageCount; pageNumber++)
+    {
+        if (string.IsNullOrEmpty(Request.QueryString["page"]) && pageNumber == 1)
+        {
+    @pageNumber     
+        }
+        else if (!string.IsNullOrEmpty(Request.QueryString["page"]) &&
+            pageNumber == Convert.ToInt32(Request.QueryString["page"])
+            )
+        {
+    @pageNumber 
+        }
+        else
+        {
+    <a href="@Url.Content("~/articles/admin?page=" + pageNumber.ToString())">@pageNumber.ToString()</a>  
+        }
+    }*@
+    
+
+@section Scripts {
+
+    <script src="~/Scripts/knockout-3.0.0.js"></script>
+    <script src="~/Scripts/ViewModels/admin.js"></script>
+}

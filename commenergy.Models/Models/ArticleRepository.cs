@@ -87,9 +87,9 @@ namespace commenergy.Models
 
         public Article FindByAuthor (string author)
         {
-        
-            
-            return context.Articles.FirstOrDefault(i=>i.Author == author);
+
+
+            return context.Articles.Include(i => i.Ratings).First(e => e.Author == author);
         }
        public Article Find(string key)
         {

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="commenergy.Models.commenergyContext-Web.config Connection String" description="commenergy.Models.commenergyContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:gbbiutopq5.database.windows.net,1433;Database=energy;User ID=doggy@gbbiutopq5;Password=moomoo22!;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\P\\Documents\\GitHub\\EnergyEx\\commenergy\\obj\\Release\\Package\\PackageTmp\\Views\\Web\.config$" match="/configuration/connectionStrings/add[@name='commenergy.Models.commenergyContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\P\\Documents\\GitHub\\EnergyEx\\commenergy\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='commenergy.Models.commenergyContext']/@connectionString" />
+  </parameter>
+</parameters>

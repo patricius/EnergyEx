@@ -13,7 +13,7 @@ namespace commenergy.Migrations
             DropIndex("dbo.Articles", new[] { "UserId" });
             DropIndex("dbo.UserRoles", new[] { "User_Id" });
             DropIndex("dbo.UserRoles", new[] { "Role_RoleId" });
-            AlterColumn("dbo.Articles", "UserId", c => c.String());
+            //AlterColumn("dbo.Articles", "UserId", c => c.String());
 
         }
         

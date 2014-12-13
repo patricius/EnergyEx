@@ -12,12 +12,12 @@ namespace commenergy.Models.Models
     {
         // Swap ApplicationRole for IdentityRole:
         RoleManager<IdentityRole> _roleManager = new RoleManager<IdentityRole>(
-            new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            new RoleStore<IdentityRole>(new commenergyContext()));
 
         UserManager<ApplicationUser> _userManager = new UserManager<ApplicationUser>(
-            new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            new UserStore<ApplicationUser>(new commenergyContext()));
 
-        ApplicationDbContext _db = new ApplicationDbContext();
+      commenergyContext _db = new commenergyContext();
 
 
         public bool RoleExists(string name)
@@ -58,6 +58,8 @@ namespace commenergy.Models.Models
             {
                 _userManager.RemoveFromRole(userId, role.RoleId);
             }
+
+            _db.SaveChanges();
         }
 
         public void RemoveFromRole(string userId, string roleName)

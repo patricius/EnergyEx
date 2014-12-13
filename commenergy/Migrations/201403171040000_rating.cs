@@ -20,13 +20,13 @@ namespace commenergy.Migrations
                         Rating = c.Single(nullable: false),
                     })
                 .PrimaryKey(t => t.RatingId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                //.ForeignKey("dbo.AspNetUsers", t => t.RatingId)
                 .ForeignKey("dbo.Articles", t => t.ArticleId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.ArticleId);
             
             AddColumn("dbo.Articles", "AvgRating", c => c.Int(nullable: true));
-            DropColumn("dbo.Articles", "Article_Id");
+           ;
         }
         
         public override void Down()

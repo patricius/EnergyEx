@@ -365,12 +365,7 @@ C:\Users\P\Documents\GitHub\EnergyEx\commenergy\bin\ImageResizer.xml
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\bin\NLog.xml
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations._new.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.M.resources
-C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.identitycolumnfix.resources
-C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.update1s.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.identityfixattempt3.resources
-C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.dong.resources
-C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.fix4.resources
-C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.scx.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.cmm.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.sccc.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.scccm.resources
@@ -378,3 +373,11 @@ C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.sdced.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.llmm.resources
 C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.mm.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.m999.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.kdkd.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.AddUserIdArticle.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.AddedArticleCommentValidation.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.mehmeh.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.author.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.M9887.resources
+C:\Users\P\Documents\GitHub\EnergyEx\commenergy\obj\Debug\commenergy.Migrations.M98879.resources

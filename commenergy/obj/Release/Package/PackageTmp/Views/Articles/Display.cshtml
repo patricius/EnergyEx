@@ -1,0 +1,70 @@
+﻿@model commenergy.Models.Article
+
+@{
+    ////ViewBag.Title = "Article";
+}
+
+@Styles.Render("~/Content/rateit.css")
+
+<div id="d"> 
+    <div class="c" data-bind="foreach: Article">
+        <img id="m" data-bind="attr:{ src: '/Content/' + ImagePath }" />
+            <h2 data-bind="text: Title"></h2>
+            <article data-bind="html: Body" ></article>
+        <div data-bind="rateit: { value: AvgRating, max: 10, step: 0.1, readonly: true }"></div>
+        </div>
+        </div>
+  
+        @*//<a href data-bind ="text: URLto"></a>*@
+        @*//<ul data-bind = "foreach:Comments">
+            <li data-bind="text:Author"></li>
+            <p data-bind="text:Body"></p>*@
+
+<h2><b>Comment On</b></h2>
+
+<div id="Rating" role="navigation">
+    <div data-bind="rateit: { value: Rating, max: 10, step: 0.1, readonly: false}, event: { mousedown: rateity}">
+    </div>
+    </div>
+    @*Email:  <input type="text" data-bind="value: Email" />
+    Author: <input type="text" data-bind="value: Author" />
+
+    Body:
+    <input type="text" data-bind="value: Body" width="48" height="48"/>
+  
+
+
+    IpAddress:
+    <input type="text" data-bind="value: IpAddress" />
+
+    <button class="btn-primary" data-bind="click: addComment">Save</button>*@
+
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'enex'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+
+        @section Scripts {
+            <script src="~/Scripts/knockout-3.0.0.js"></script>
+            <script src="~/Scripts/ViewModels/display.js"></script>
+            <script src="~/Scripts/jquery.rateit.js"></script>
+            <script src="~/Scripts/ViewModels/Rating.js"></script>
+        }

@@ -248,9 +248,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.CS" />
     <Compile Include="Controllers\RoleController.cs" />
+    <EmbeddedResource Include="Migrations\201311172125491_AddedArticleCommentValidation.resx">
+      <DependentUpon>201311172125491_AddedArticleCommentValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312050605273_commenergy.layer.article.cs.cs" />
+    <Compile Include="Migrations\201311172125491_AddedArticleCommentValidation.cs" />
+    <Compile Include="Migrations\201311172125491_AddedArticleCommentValidation.Designer.cs">
+      <DependentUpon>201311172125491_AddedArticleCommentValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312050605273_commenergy.layer.article.cs.Designer.cs">
+      <DependentUpon>201312050605273_commenergy.layer.article.cs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201312271638394_AddUserIdArticle.cs" />
+    <Compile Include="Migrations\201312271638394_AddUserIdArticle.Designer.cs">
+      <DependentUpon>201312271638394_AddUserIdArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201403071155295_abstract.cs" />
     <Compile Include="Migrations\201403071155295_abstract.Designer.cs">
       <DependentUpon>201403071155295_abstract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403130623245_m.cs" />
+    <Compile Include="Migrations\201403130623245_m.Designer.cs">
+      <DependentUpon>201403130623245_m.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201403141747125_b.cs" />
     <Compile Include="Migrations\201403141747125_b.Designer.cs">
@@ -288,33 +307,9 @@
     <Compile Include="Migrations\201405020017134_new.Designer.cs">
       <DependentUpon>201405020017134_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201405020053416_M.cs" />
-    <Compile Include="Migrations\201405020053416_M.Designer.cs">
-      <DependentUpon>201405020053416_M.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405020130167_identitycolumnfix.cs" />
-    <Compile Include="Migrations\201405020130167_identitycolumnfix.Designer.cs">
-      <DependentUpon>201405020130167_identitycolumnfix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405020228203_update1s.cs" />
-    <Compile Include="Migrations\201405020228203_update1s.Designer.cs">
-      <DependentUpon>201405020228203_update1s.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201405020321380_identityfixattempt3.cs" />
     <Compile Include="Migrations\201405020321380_identityfixattempt3.Designer.cs">
       <DependentUpon>201405020321380_identityfixattempt3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405020609054_dong.cs" />
-    <Compile Include="Migrations\201405020609054_dong.Designer.cs">
-      <DependentUpon>201405020609054_dong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405020817126_fix4.cs" />
-    <Compile Include="Migrations\201405020817126_fix4.Designer.cs">
-      <DependentUpon>201405020817126_fix4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405030021353_scx.cs" />
-    <Compile Include="Migrations\201405030021353_scx.Designer.cs">
-      <DependentUpon>201405030021353_scx.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201405030050253_cm.cs" />
     <Compile Include="Migrations\201405030050253_cm.Designer.cs">
@@ -344,6 +339,27 @@
     <Compile Include="Migrations\201405081216465_mm.Designer.cs">
       <DependentUpon>201405081216465_mm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409031207014_m999.cs" />
+    <Compile Include="Migrations\201409031207014_m999.Designer.cs">
+      <DependentUpon>201409031207014_m999.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409031354284_kdkd.cs" />
+    <Compile Include="Migrations\201409031354284_kdkd.Designer.cs">
+      <DependentUpon>201409031354284_kdkd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409152029028_mehmeh.cs" />
+    <Compile Include="Migrations\201409152029028_mehmeh.Designer.cs">
+      <DependentUpon>201409152029028_mehmeh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409172131490_M9887.cs" />
+    <Compile Include="Migrations\201409172131490_M9887.Designer.cs">
+      <DependentUpon>201409172131490_M9887.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409172253212_M98879.cs" />
+    <Compile Include="Migrations\201409172253212_M98879.Designer.cs">
+      <DependentUpon>201409172253212_M98879.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\author.cs" />
     <Compile Include="Migrations\DataContextInitializer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
@@ -362,8 +378,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Migrations\201312021614138_commenergycontext.cs.resx" />
     <EmbeddedResource Include="Migrations\201312050605273_commenergy.layer.article.cs.resx" />
+    <EmbeddedResource Include="Migrations\201312271638394_AddUserIdArticle.resx">
+      <DependentUpon>201312271638394_AddUserIdArticle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201403071155295_abstract.resx">
       <DependentUpon>201403071155295_abstract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403130623245_m.resx">
+      <DependentUpon>201403130623245_m.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201403141747125_b.resx">
       <DependentUpon>201403141747125_b.cs</DependentUpon>
@@ -392,26 +414,8 @@
     <EmbeddedResource Include="Migrations\201405020017134_new.resx">
       <DependentUpon>201405020017134_new.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405020053416_M.resx">
-      <DependentUpon>201405020053416_M.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405020130167_identitycolumnfix.resx">
-      <DependentUpon>201405020130167_identitycolumnfix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405020228203_update1s.resx">
-      <DependentUpon>201405020228203_update1s.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405020321380_identityfixattempt3.resx">
       <DependentUpon>201405020321380_identityfixattempt3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405020609054_dong.resx">
-      <DependentUpon>201405020609054_dong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405020817126_fix4.resx">
-      <DependentUpon>201405020817126_fix4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405030021353_scx.resx">
-      <DependentUpon>201405030021353_scx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405030050253_cm.resx">
       <DependentUpon>201405030050253_cm.cs</DependentUpon>
@@ -434,9 +438,26 @@
     <EmbeddedResource Include="Migrations\201405081216465_mm.resx">
       <DependentUpon>201405081216465_mm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409031207014_m999.resx">
+      <DependentUpon>201409031207014_m999.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409031354284_kdkd.resx">
+      <DependentUpon>201409031354284_kdkd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409152029028_mehmeh.resx">
+      <DependentUpon>201409152029028_mehmeh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409172131490_M9887.resx">
+      <DependentUpon>201409172131490_M9887.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409172253212_M98879.resx">
+      <DependentUpon>201409172253212_M98879.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\author.resx">
+      <DependentUpon>author.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\commenergy.Models.commenergyContext.mdf" />
     <Content Include="Content\amelia.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
@@ -515,7 +536,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="main.css" />
     <Content Include="normalize.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -618,6 +638,7 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <None Include="Properties\PublishProfiles\energydrinkexchange.pubxml" />
     <None Include="Scripts\jHtmlArea-0.7.5-vsdoc.js" />
     <None Include="Scripts\jHtmlArea-0.7.5.min-vsdoc.js" />
     <Content Include="Scripts\jHtmlArea-0.7.5.js" />
@@ -808,6 +829,7 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\ViewModels\admin.js" />
     <Content Include="Scripts\ViewModels\Create.js" />
     <Content Include="Scripts\ViewModels\display.js" />
     <Content Include="Scripts\ViewModels\Index.js" />
@@ -825,7 +847,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\ViewModels\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
@@ -905,6 +927,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="Views\Role\" />
   </ItemGroup>

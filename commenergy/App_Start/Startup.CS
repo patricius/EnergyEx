@@ -42,7 +42,9 @@ namespace commenergy.App_Start
             //   appId: "",
             //   appSecret: "");
 
-            app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication(
+  clientId: "000-000.apps.googleusercontent.com",
+  clientSecret: "00000000000");
 
             //AddUserAndRoles();
         }

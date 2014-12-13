@@ -116,6 +116,8 @@ namespace commenergy.Models.AccountModels
 
     public class EditUserViewModel
     {
+        private IdentityUser user;
+
         public EditUserViewModel() { }
 
         // Allow Initialization with an instance of ApplicationUser:
@@ -125,6 +127,12 @@ namespace commenergy.Models.AccountModels
             //thissssssssssssxxzxxxcsddccccccccccccccccccccccccccccccccss.FirstName = user.FirstName;
             //this.LastName = user.LastName;,,,,,,,,,,,,,,,,,
             this.Email = user.Email;
+        }
+
+        public EditUserViewModel(IdentityUser user)
+        {
+            // TODO: Complete member initialization
+            this.user = user;
         }
 
         [Required]
@@ -147,6 +155,8 @@ namespace commenergy.Models.AccountModels
 
     public class SelectUserRolesViewModel
     {
+        private IdentityUser user;
+
         public SelectUserRolesViewModel()
         {
             this.Roles = new List<SelectRoleEditorViewModel>();
@@ -161,7 +171,7 @@ namespace commenergy.Models.AccountModels
             this.FirstName = user.FirstName;
             this.LastName = user.LastName;
 
-            var Db = new ApplicationDbContext();
+            var Db = new commenergyContext();
 
             // Add all available roles to the list of EditorViewModels:
             var allRoles = Db.Roles;
@@ -181,6 +191,12 @@ namespace commenergy.Models.AccountModels
                     Roles.Find(r => r.RoleId == userRole.Id);
                 checkUserRole.Selected = true;
             }
+        }
+
+        public SelectUserRolesViewModel(IdentityUser user)
+        {
+            // TODO: Complete member initialization
+            this.user = user;
         }
 
         public string UserName { get; set; }
